@@ -1,0 +1,170 @@
+{
+	"title": "Nashua PAL Board Member Page",
+	"type": "page",
+	"version": "1.54.0",
+	"content": [
+		{
+			"id": "board-hero",
+			"elType": "section",
+			"settings": {
+				"layout": "full_width",
+				"padding": { "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0" }
+			},
+			"elements": [
+				{
+					"id": "board-hero-col",
+					"elType": "column",
+					"settings": { "padding": { "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0" } },
+					"elements": [
+						{
+							"id": "board-hero-widget",
+							"elType": "widget",
+							"widgetType": "pal_board_page_hero",
+							"settings": {
+								"title": "Protected: PAL Board Member Page",
+								"subtitle": "Access important board documents, meeting minutes, and event materials. This page is exclusively for PAL board members."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "board-event-materials",
+			"elType": "section",
+			"settings": {
+				"layout": "boxed",
+				"content_width": { "unit": "px", "size": 1200 },
+				"padding": { "unit": "px", "top": "60", "right": "20", "bottom": "60", "left": "20" }
+			},
+			"elements": [
+				{
+					"id": "board-event-materials-col",
+					"elType": "column",
+					"settings": {},
+					"elements": [
+						{
+							"id": "board-event-heading",
+							"elType": "widget",
+							"widgetType": "pal_section_heading",
+							"settings": {
+								"eyebrow": "EVENT MATERIALS",
+								"title": "Event Materials",
+								"align": "left"
+							}
+						},
+						{
+							"id": "board-event-materials-widget",
+							"elType": "widget",
+							"widgetType": "pal_board_event_materials",
+							"settings": { "count": 50 }
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "board-documents",
+			"elType": "section",
+			"settings": {
+				"layout": "boxed",
+				"content_width": { "unit": "px", "size": 1200 },
+				"padding": { "unit": "px", "top": "60", "right": "20", "bottom": "60", "left": "20" },
+				"background_color": "#f8f9fb"
+			},
+			"elements": [
+				{
+					"id": "board-documents-col",
+					"elType": "column",
+					"settings": {},
+					"elements": [
+						{
+							"id": "board-doc-heading",
+							"elType": "widget",
+							"widgetType": "pal_section_heading",
+							"settings": {
+								"eyebrow": "BOARD DOCUMENTS",
+								"title": "Board Documents",
+								"align": "center"
+							}
+						},
+						{
+							"id": "board-documents-widget",
+							"elType": "widget",
+							"widgetType": "pal_board_documents",
+							"settings": {
+								"year": "",
+								"show_filter": "true",
+								"count": 50,
+								"columns": "3"
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "board-meeting-minutes",
+			"elType": "section",
+			"settings": {
+				"layout": "boxed",
+				"content_width": { "unit": "px", "size": 1200 },
+				"padding": { "unit": "px", "top": "60", "right": "20", "bottom": "60", "left": "20" }
+			},
+			"elements": [
+				{
+					"id": "board-meeting-minutes-col",
+					"elType": "column",
+					"settings": {},
+					"elements": [
+						{
+							"id": "board-minutes-heading",
+							"elType": "widget",
+							"widgetType": "pal_section_heading",
+							"settings": {
+								"eyebrow": "MEETING MINUTES",
+								"title": "Meeting Minutes",
+								"align": "left"
+							}
+						},
+						{
+							"id": "board-meeting-minutes-widget",
+							"elType": "widget",
+							"widgetType": "pal_board_meeting_minutes",
+							"settings": { "count": 50 }
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "board-cta",
+			"elType": "section",
+			"settings": {
+				"layout": "boxed",
+				"content_width": { "unit": "px", "size": 1200 },
+				"padding": { "unit": "px", "top": "0", "right": "20", "bottom": "60", "left": "20" }
+			},
+			"elements": [
+				{
+					"id": "board-cta-col",
+					"elType": "column",
+					"settings": {},
+					"elements": [
+						{
+							"id": "board-cta-widget",
+							"elType": "widget",
+							"widgetType": "pal_board_doc_cta",
+							"settings": {
+								"title": "Looking for Older Documents?",
+								"description": "Contact the PAL office to request archived board documents, meeting minutes, or other historical records.",
+								"btn_label": "Contact Us",
+								"btn_url": "/contact/"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

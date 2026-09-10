@@ -1,0 +1,1228 @@
+/* ==========================================================================
+   Scholarships — Nashua PAL Core
+   ========================================================================== */
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.pal-scholar-hero {
+	position: relative;
+	min-height: 420px;
+	display: flex;
+	align-items: center;
+	background: var(--pal-champ-blue, #11284D);
+	background-size: cover;
+	background-position: center;
+	overflow: hidden;
+}
+
+.pal-scholar-hero__overlay {
+	position: absolute;
+	inset: 0;
+	background: none;
+	z-index: 1;
+}
+
+.pal-scholar-hero--has-bg .pal-scholar-hero__overlay {
+	background: linear-gradient(90deg, rgba(17,40,77,0.80) 0%, rgba(17,40,77,0.45) 100%);
+}
+
+.pal-scholar-hero__container {
+	position: relative;
+	z-index: 2;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 60px 40px;
+	display: flex;
+	align-items: center;
+	gap: 40px;
+	width: 100%;
+}
+
+.pal-scholar-hero__logo {
+	width: 140px;
+	height: auto;
+	flex-shrink: 0;
+}
+
+.pal-scholar-hero__content {
+	color: #fff;
+}
+
+.pal-scholar-hero__eyebrow {
+	display: block;
+	font-family: Montserrat, sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	font-size: 0.7rem;
+	color: rgba(255,255,255,0.7);
+	margin-bottom: 10px;
+}
+
+.pal-scholar-hero__title {
+	font-family: 'Playfair Display', Georgia, serif;
+	font-size: 52px;
+	font-weight: 700;
+	color: var(--pal-champ-gold, #F2B134);
+	margin: 0 0 12px;
+	line-height: 1.1;
+}
+
+.pal-scholar-hero__subtitle {
+	font-family: 'Dancing Script', 'Great Vibes', cursive;
+	font-size: 26px;
+	color: #fff;
+	margin: 0 0 18px;
+	font-weight: 400;
+}
+
+.pal-scholar-hero__desc {
+	font-size: 15px;
+	line-height: 1.7;
+	color: rgba(255,255,255,0.85);
+	margin: 0 0 24px;
+	max-width: 600px;
+}
+
+.pal-scholar-hero__buttons {
+	display: flex;
+	gap: 14px;
+	flex-wrap: wrap;
+}
+
+.pal-scholar-hero__btn {
+	display: inline-block;
+	padding: 12px 28px;
+	font-family: Montserrat, sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	text-decoration: none;
+	border-radius: 50px;
+	transition: all 0.25s ease;
+}
+
+.pal-scholar-hero__btn--primary {
+	background: var(--pal-champ-gold, #F2B134);
+	color: var(--pal-champ-blue, #11284D);
+	border: 2px solid var(--pal-champ-gold, #F2B134);
+}
+
+.pal-scholar-hero__btn--primary:hover {
+	background: var(--pal-champ-gold-dark, #d99c1e);
+	border-color: var(--pal-champ-gold-dark, #d99c1e);
+	color: var(--pal-champ-blue, #11284D);
+}
+
+.pal-scholar-hero__btn--outline {
+	background: transparent;
+	color: #fff;
+	border: 2px solid rgba(255,255,255,0.6);
+}
+
+.pal-scholar-hero__btn--outline:hover {
+	border-color: #fff;
+	background: rgba(255,255,255,0.1);
+	color: #fff;
+}
+
+/* ==========================================================================
+   Values Strip
+   ========================================================================== */
+
+.pal-scholar-values {
+	background: var(--pal-champ-light, #F8F9FB);
+	padding: 40px 20px;
+	border-bottom: 1px solid var(--pal-champ-border, #E2E8F0);
+}
+
+.pal-scholar-values__inner {
+	max-width: 1100px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 24px;
+}
+
+.pal-scholar-values__item {
+	text-align: center;
+	padding: 16px 8px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.pal-scholar-values__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	background: var(--pal-champ-blue, #11284D);
+	color: var(--pal-champ-gold, #F2B134);
+	font-size: 22px;
+	margin: 0 auto 10px;
+}
+
+.pal-scholar-values__title {
+	font-family: Montserrat, sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--pal-champ-text, #1D2433);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	white-space: nowrap;
+}
+
+/* ==========================================================================
+   Info Block
+   ========================================================================== */
+
+.pal-scholar-info {
+	padding: 50px 20px;
+	background: #fff;
+}
+
+.pal-scholar-info__inner {
+	max-width: 800px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.pal-scholar-info__desc {
+	font-size: 15px;
+	line-height: 1.75;
+	color: var(--pal-champ-gray, #64748B);
+	margin: 0 0 20px;
+}
+
+.pal-scholar-info__highlight {
+	font-family: Montserrat, sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--pal-champ-blue, #11284D);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	margin: 0 0 8px;
+}
+
+.pal-scholar-info__btn {
+	display: inline-block;
+	margin-top: 20px;
+	padding: 13px 32px;
+	background: var(--pal-champ-gold, #F2B134);
+	color: var(--pal-champ-blue, #11284D);
+	font-family: Montserrat, sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	text-decoration: none;
+	border-radius: 50px;
+	transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.pal-scholar-info__btn:hover {
+	background: var(--pal-champ-gold-dark, #d99c1e);
+	color: var(--pal-champ-blue, #11284D);
+	transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Recipients by Year
+   ========================================================================== */
+
+.pal-scholar-years {
+	/* Container for all year blocks */
+}
+
+.pal-scholar-year {
+	padding: 50px 20px;
+	background: #fff;
+}
+
+.pal-scholar-year--alt {
+	background: var(--pal-champ-light, #F8F9FB);
+}
+
+.pal-scholar-year__inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	gap: 40px;
+	align-items: flex-start;
+}
+
+/* -- Year Badge (left sidebar) ---------------------------------------- */
+
+.pal-scholar-year__badge {
+	flex-shrink: 0;
+	width: 160px;
+	background: var(--pal-champ-blue, #11284D);
+	border-radius: 16px;
+	padding: 28px 16px;
+	text-align: center;
+	color: #fff;
+	position: sticky;
+	top: 100px;
+}
+
+.pal-scholar-year__badge-icon {
+	font-size: 36px;
+	color: var(--pal-champ-gold, #F2B134);
+	margin-bottom: 12px;
+}
+
+.pal-scholar-year__badge-label {
+	display: block;
+	font-family: Montserrat, sans-serif;
+	font-size: 10px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	color: rgba(255,255,255,0.8);
+	line-height: 1.4;
+}
+
+.pal-scholar-year__badge-year {
+	display: block;
+	font-family: 'Playfair Display', Georgia, serif;
+	font-size: 42px;
+	font-weight: 700;
+	color: var(--pal-champ-gold, #F2B134);
+	margin: 4px 0;
+	line-height: 1.1;
+}
+
+.pal-scholar-year__badge-dots {
+	display: flex;
+	justify-content: center;
+	gap: 6px;
+	margin-top: 14px;
+}
+
+.pal-scholar-year__badge-dots span {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--pal-champ-gold, #F2B134);
+	opacity: 0.6;
+}
+
+.pal-scholar-year__badge-dots span:nth-child(2) {
+	opacity: 1;
+}
+
+/* -- Recipients Grid -------------------------------------------------- */
+
+.pal-scholar-year__content {
+	flex: 1;
+	min-width: 0;
+}
+
+.pal-scholar-year__grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 28px;
+}
+
+.pal-scholar-year__footer {
+	text-align: center;
+	margin-top: 28px;
+}
+
+.pal-scholar-year__view-all {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-family: Montserrat, sans-serif;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--pal-champ-blue, #11284D);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.pal-scholar-year__view-all:hover {
+	color: var(--pal-champ-gold-dark, #d99c1e);
+}
+
+/* -- Recipient Card --------------------------------------------------- */
+
+.pal-scholar-card {
+	text-align: center;
+	padding: 12px 8px;
+}
+.pal-scholar-card[data-winner-name] {
+	cursor: pointer;
+	border-radius: var(--pal-radius-sm, 8px);
+	transition: background .2s ease;
+}
+.pal-scholar-card[data-winner-name]:hover {
+	background: rgba(7, 31, 63, 0.06);
+}
+
+.pal-scholar-card__photo {
+	width: 110px;
+	height: 110px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: 0 auto 12px;
+	background: #E8EDF3;
+	border: 3px solid var(--pal-champ-gold, #F2B134);
+}
+
+.pal-scholar-card__photo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.pal-scholar-card__placeholder {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	font-size: 36px;
+	color: #C4CCD8;
+}
+
+.pal-scholar-card__name {
+	font-family: Montserrat, sans-serif;
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--pal-champ-text, #1D2433);
+	margin: 0 0 4px;
+	line-height: 1.3;
+}
+
+.pal-scholar-card__amount {
+	display: block;
+	font-family: Montserrat, sans-serif;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--pal-champ-gold-dark, #d99c1e);
+	margin-bottom: 4px;
+}
+
+.pal-scholar-card__school {
+	font-size: 12px;
+	color: var(--pal-champ-gray, #64748B);
+	margin: 0;
+	line-height: 1.4;
+}
+
+/* -- Single Year Page ------------------------------------------------- */
+
+.pal-scholar-single-year {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 50px 20px;
+}
+
+.pal-scholar-single-year__title {
+	font-family: Montserrat, sans-serif;
+	font-size: 28px;
+	font-weight: 800;
+	color: var(--pal-champ-blue, #11284D);
+	text-align: center;
+	margin: 0 0 36px;
+}
+
+.pal-scholar-empty {
+	text-align: center;
+	color: var(--pal-champ-gray, #64748B);
+	padding: 40px 20px;
+}
+
+/* ==========================================================================
+   About Section
+   ========================================================================== */
+
+.pal-scholar-about {
+	background: var(--pal-champ-blue, #11284D);
+	padding: 60px 20px;
+}
+
+.pal-scholar-about__inner {
+	max-width: 1100px;
+	margin: 0 auto;
+	display: flex;
+	gap: 48px;
+	align-items: center;
+}
+
+.pal-scholar-about__text {
+	flex: 1;
+}
+
+.pal-scholar-about__title {
+	font-family: Montserrat, sans-serif;
+	font-size: 24px;
+	font-weight: 800;
+	color: #fff;
+	margin: 0 0 20px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.pal-scholar-about__title i {
+	color: var(--pal-champ-gold, #F2B134);
+}
+
+.pal-scholar-about__desc {
+	font-size: 15px;
+	line-height: 1.75;
+	color: rgba(255,255,255,0.8);
+	margin: 0 0 14px;
+}
+
+.pal-scholar-about__media {
+	flex-shrink: 0;
+	width: 360px;
+}
+
+.pal-scholar-about__photo {
+	width: 100%;
+	border-radius: 16px;
+	box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+
+/* ==========================================================================
+   CTA Bar
+   ========================================================================== */
+
+.pal-scholar-cta {
+	background: var(--pal-champ-gold, #F2B134);
+	padding: 36px 20px;
+}
+
+.pal-scholar-cta__inner {
+	max-width: 1100px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	flex-wrap: wrap;
+}
+
+.pal-scholar-cta__icon {
+	font-size: 28px;
+	color: var(--pal-champ-blue, #11284D);
+}
+
+.pal-scholar-cta__tagline {
+	font-family: Montserrat, sans-serif;
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--pal-champ-blue, #11284D);
+	margin: 0;
+}
+
+.pal-scholar-cta__btn {
+	display: inline-block;
+	padding: 12px 28px;
+	background: var(--pal-champ-blue, #11284D);
+	color: #fff;
+	font-family: Montserrat, sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	text-decoration: none;
+	border-radius: 50px;
+	transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.pal-scholar-cta__btn:hover {
+	background: #0d1e3a;
+	color: #fff;
+	transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Archive Page
+   ========================================================================== */
+
+.pal-scholar-archive__hero {
+	background: var(--pal-champ-blue, #11284D);
+	padding: 60px 20px 50px;
+	text-align: center;
+}
+
+.pal-scholar-archive__hero-inner {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.pal-scholar-archive__eyebrow {
+	font-family: Montserrat, sans-serif;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	color: var(--pal-champ-gold, #F2B134);
+	margin: 0 0 12px;
+}
+
+.pal-scholar-archive__title {
+	font-family: Montserrat, sans-serif;
+	font-size: 36px;
+	font-weight: 800;
+	color: #fff;
+	margin: 0 0 14px;
+}
+
+.pal-scholar-archive__subtitle {
+	font-size: 16px;
+	color: rgba(255,255,255,0.75);
+	margin: 0;
+	line-height: 1.6;
+}
+
+.pal-scholar-archive__filters {
+	background: #f8f9fa;
+	border-bottom: 1px solid #e2e6ea;
+	padding: 20px;
+}
+
+.pal-scholar-archive__filters-inner {
+	max-width: 1100px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.pal-scholar-archive__filter-group label {
+	font-family: Montserrat, sans-serif;
+	font-size: 12px;
+	font-weight: 700;
+	color: var(--pal-champ-blue, #11284D);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	display: block;
+	margin-bottom: 4px;
+}
+
+.pal-scholar-archive__filter-group select {
+	padding: 8px 32px 8px 12px;
+	font-size: 14px;
+	border: 1px solid #d1d5db;
+	border-radius: 6px;
+	background: #fff;
+	min-width: 160px;
+}
+
+.pal-scholar-archive__content {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 991px) {
+	.pal-scholar-hero__container {
+		flex-direction: column;
+		text-align: center;
+		padding: 40px 20px;
+	}
+	.pal-scholar-hero__logo {
+		width: 100px;
+	}
+	.pal-scholar-hero__desc {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.pal-scholar-hero__buttons {
+		justify-content: center;
+	}
+	.pal-scholar-hero__title {
+		font-size: 40px;
+	}
+	.pal-scholar-values__inner {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.pal-scholar-year__inner {
+		flex-direction: column;
+	}
+	.pal-scholar-year__badge {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		padding: 16px 24px;
+		border-radius: 12px;
+		position: static;
+		flex-wrap: wrap;
+	}
+	.pal-scholar-year__badge-programs {
+		flex-direction: row !important;
+		width: auto !important;
+		margin-top: 0 !important;
+	}
+	.pal-scholar-year__about-btn {
+		width: auto !important;
+		white-space: nowrap !important;
+	}
+	.pal-scholar-year__badge-icon {
+		font-size: 28px;
+		margin-bottom: 0;
+	}
+	.pal-scholar-year__badge-year {
+		font-size: 32px;
+	}
+	.pal-scholar-year__badge-dots {
+		display: none;
+	}
+	.pal-scholar-year__grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.pal-scholar-about__inner {
+		flex-direction: column;
+	}
+	.pal-scholar-about__media {
+		width: 100%;
+		max-width: 400px;
+	}
+}
+
+@media (max-width: 767px) {
+	.pal-scholar-hero__title {
+		font-size: 32px;
+	}
+	.pal-scholar-hero__subtitle {
+		font-size: 20px;
+	}
+	.pal-scholar-values__inner {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px;
+	}
+	.pal-scholar-year__grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+	.pal-scholar-card__photo {
+		width: 90px;
+		height: 90px;
+	}
+	.pal-scholar-cta__inner {
+		flex-direction: column;
+		text-align: center;
+	}
+}
+
+@media (max-width: 480px) {
+	.pal-scholar-year__grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px;
+	}
+	.pal-scholar-card__photo {
+		width: 80px;
+		height: 80px;
+	}
+}
+
+/* ==========================================================================
+   Alumni Label
+   ========================================================================== */
+
+.pal-scholar-card__alumni {
+	font-family: Montserrat, sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--pal-champ-blue, #11284D);
+	margin: 0 0 4px;
+	line-height: 1.4;
+}
+
+/* ==========================================================================
+   About Scholarship Button (inside year badge)
+   ========================================================================== */
+
+.pal-scholar-year__badge-programs {
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 8px !important;
+	margin-top: 16px !important;
+	width: 100% !important;
+}
+
+.pal-scholar-year__about-btn {
+	display: inline-block !important;
+	padding: 8px 12px !important;
+	background: #F2B134 !important;
+	color: rgba(255,255,255,0.8) !important;
+	border: none !important;
+	border-radius: 8px !important;
+	font-family: Montserrat, sans-serif !important;
+	font-size: 9px !important;
+	font-weight: 700 !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.05em !important;
+	cursor: pointer !important;
+	transition: all 0.2s ease !important;
+	text-align: center !important;
+	line-height: 1.4 !important;
+	width: 100% !important;
+	text-decoration: none !important;
+	outline: none !important;
+	box-shadow: none !important;
+	word-wrap: break-word !important;
+	overflow-wrap: break-word !important;
+}
+
+.pal-scholar-year__about-btn:hover {
+	background: #d99c1e !important;
+	color: #fff !important;
+	transform: translateY(-1px) !important;
+}
+
+.pal-scholar-year__about-btn:focus {
+	outline: none !important;
+	box-shadow: 0 0 0 3px rgba(242,177,52,0.4) !important;
+}
+
+/* ==========================================================================
+   Scholarship Modal
+   ========================================================================== */
+
+.pal-scholarship-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 100000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}
+
+.pal-scholarship-modal__overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6);
+	backdrop-filter: blur(4px);
+}
+
+.pal-scholarship-modal__dialog {
+	position: relative;
+	background: #fff;
+	border-radius: 16px;
+	max-width: 560px;
+	width: 100%;
+	max-height: 80vh;
+	overflow-y: auto;
+	padding: 36px;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+	animation: palScholarshipModalIn 0.25s ease-out;
+}
+
+@keyframes palScholarshipModalIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px) scale(0.97);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+.pal-scholarship-modal__close {
+	position: absolute;
+	top: 14px;
+	right: 18px;
+	background: none !important;
+	background-color: transparent !important;
+	border: none !important;
+	font-size: 28px;
+	color: var(--pal-navy, #071F3F) !important;
+	cursor: pointer;
+	line-height: 1;
+	padding: 4px;
+	transition: color 0.2s, background 0.2s;
+	border-radius: 50%;
+	width: 36px;
+	height: 36px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pal-scholarship-modal__close:hover,
+.pal-scholarship-modal__close:focus {
+	color: var(--pal-white, #FFFFFF) !important;
+	background: var(--pal-navy, #071F3F) !important;
+	background-color: var(--pal-navy, #071F3F) !important;
+	border: none !important;
+	text-decoration: none !important;
+}
+
+.pal-scholarship-modal__photo-wrap {
+	text-align: center;
+	margin-bottom: 16px;
+}
+.pal-scholarship-modal__photo {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 4px solid var(--pal-champ-gold, #F2B134);
+	box-shadow: 0 4px 16px rgba(7, 31, 63, 0.18);
+}
+.pal-scholarship-modal__header {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-bottom: 16px;
+}
+
+.pal-scholarship-modal__icon {
+	font-size: 32px;
+	color: var(--pal-champ-gold, #F2B134);
+	flex-shrink: 0;
+}
+
+.pal-scholarship-modal__title {
+	font-family: Montserrat, sans-serif;
+	font-size: 22px;
+	font-weight: 800;
+	color: var(--pal-champ-blue, #11284D);
+	margin: 0;
+	line-height: 1.25;
+}
+
+.pal-scholarship-modal__meta {
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid #eee;
+}
+
+.pal-scholarship-modal__meta-item {
+	font-family: Montserrat, sans-serif;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--pal-champ-gray, #64748B);
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.pal-scholarship-modal__meta-item i {
+	color: var(--pal-champ-gold-dark, #d99c1e);
+	font-size: 14px;
+}
+
+.pal-scholarship-modal__body {
+	font-size: 15px;
+	line-height: 1.7;
+	color: #444;
+}
+
+.pal-scholarship-modal__body p {
+	margin: 0 0 12px;
+}
+
+.pal-scholarship-modal__body p:last-child {
+	margin-bottom: 0;
+}
+
+@media (max-width: 480px) {
+	.pal-scholarship-modal__dialog {
+		padding: 24px 20px;
+	}
+	.pal-scholarship-modal__title {
+		font-size: 18px;
+	}
+}
+
+/* ==========================================================================
+   Scholarship Featured Section (Homepage promo)
+   ========================================================================== */
+
+.pal-scholar-featured {
+	padding: 32px 20px 16px;
+}
+
+.pal-scholar-featured__inner {
+	position: relative;
+	display: grid;
+	grid-template-columns: 380px 1fr;
+	align-items: stretch;
+	max-width: 1140px;
+	margin: 0 auto;
+	background: var(--pal-white, #FFFFFF);
+	border-radius: 16px;
+	overflow: visible;
+	box-shadow: 0 4px 24px rgba(7, 31, 63, 0.08);
+}
+
+/* Decorative gold dots on the right side */
+.pal-scholar-featured__inner::after {
+	content: '';
+	position: absolute;
+	right: -20px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 32px;
+	height: 90px;
+	background-image: radial-gradient(circle, var(--pal-yellow, #F4A51C) 1.2px, transparent 1.2px);
+	background-size: 8px 8px;
+	opacity: 0.2;
+	pointer-events: none;
+	z-index: 1;
+}
+
+/* ----- Image column ----- */
+.pal-scholar-featured__media {
+	position: relative;
+	overflow: hidden;
+	border-radius: 16px 0 0 16px;
+}
+.pal-scholar-featured__photo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover;
+	display: block;
+}
+
+/* ----- Floating icon (child of __inner, not __media) ----- */
+.pal-scholar-featured__icon {
+	position: absolute;
+	top: 28%;
+	left: 354px;
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	background: var(--pal-navy, #071F3F);
+	color: var(--pal-yellow, #F4A51C);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 22px;
+	border: 3px solid rgba(244, 165, 28, 0.35);
+	box-shadow: 0 4px 16px rgba(7, 31, 63, 0.22);
+	z-index: 3;
+}
+
+/* ----- Content column ----- */
+.pal-scholar-featured__content {
+	position: relative;
+	padding: 28px 36px 28px 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	z-index: 2;
+}
+.pal-scholar-featured__eyebrow {
+	font-family: Montserrat, sans-serif;
+	font-size: 10px;
+	font-weight: 800;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--pal-yellow, #F4A51C);
+	margin-bottom: 6px;
+	display: block;
+}
+.pal-scholar-featured__title {
+	font-family: Montserrat, sans-serif;
+	font-size: 26px;
+	font-weight: 800;
+	color: var(--pal-navy, #071F3F);
+	margin: 0 0 2px;
+	line-height: 1.15;
+}
+.pal-scholar-featured__subtitle {
+	display: block;
+	font-family: 'Allura', cursive;
+	font-size: 26px;
+	font-weight: 400;
+	color: var(--pal-yellow, #F4A51C);
+	margin-top: 0;
+}
+.pal-scholar-featured__highlight {
+	font-family: Montserrat, sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--pal-navy, #071F3F);
+	margin: 12px 0 2px;
+	line-height: 1.4;
+}
+.pal-scholar-featured__desc {
+	font-size: 13px;
+	line-height: 1.65;
+	color: var(--pal-gray-700, #4a5568);
+	margin: 4px 0 16px;
+}
+
+/* ----- Info items row ----- */
+.pal-scholar-featured__info {
+	display: flex;
+	align-items: stretch;
+	margin-bottom: 18px;
+	gap: 0;
+}
+.pal-scholar-featured__info-item {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 10px;
+	min-width: 0;
+}
+.pal-scholar-featured__info-item + .pal-scholar-featured__info-item {
+	border-left: 1px solid #dde2e8;
+}
+.pal-scholar-featured__info-icon {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: transparent;
+	color: var(--pal-navy, #071F3F);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 15px;
+	flex-shrink: 0;
+}
+.pal-scholar-featured__info-text {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	min-width: 0;
+}
+.pal-scholar-featured__info-label {
+	font-family: Montserrat, sans-serif;
+	font-size: 9px;
+	font-weight: 600;
+	color: var(--pal-gray-400, #94a3b8);
+	line-height: 1.2;
+	white-space: nowrap;
+}
+.pal-scholar-featured__info-value {
+	font-family: Montserrat, sans-serif;
+	font-size: 11px;
+	font-weight: 700;
+	color: var(--pal-navy, #071F3F);
+	line-height: 1.3;
+}
+
+/* ----- Buttons ----- */
+.pal-scholar-featured__buttons {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+.pal-scholar-featured__btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-family: Montserrat, sans-serif;
+	font-size: 11px;
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	padding: 11px 22px;
+	border-radius: 6px;
+	text-decoration: none !important;
+	transition: all 0.2s ease;
+	cursor: pointer;
+}
+.pal-scholar-featured__btn--primary {
+	background: var(--pal-navy, #071F3F) !important;
+	color: var(--pal-white, #FFFFFF) !important;
+	border: 2px solid var(--pal-navy, #071F3F) !important;
+}
+.pal-scholar-featured__btn--primary:hover {
+	background: #0a2a52 !important;
+	border-color: #0a2a52 !important;
+	color: var(--pal-white, #FFFFFF) !important;
+}
+.pal-scholar-featured__btn--outline {
+	background: var(--pal-white, #FFFFFF) !important;
+	color: var(--pal-navy, #071F3F) !important;
+	border: 2px solid #c8ced6 !important;
+}
+.pal-scholar-featured__btn--outline:hover {
+	background: var(--pal-navy, #071F3F) !important;
+	border-color: var(--pal-navy, #071F3F) !important;
+	color: var(--pal-white, #FFFFFF) !important;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 900px) {
+	.pal-scholar-featured__inner {
+		grid-template-columns: 1fr;
+	}
+	.pal-scholar-featured__inner::after {
+		display: none;
+	}
+	.pal-scholar-featured__media {
+		min-height: 240px;
+	}
+	.pal-scholar-featured__icon {
+		top: auto;
+		bottom: -28px;
+		left: 50%;
+		right: auto;
+		transform: translateX(-50%);
+	}
+	.pal-scholar-featured__content {
+		padding: 40px 24px 24px;
+	}
+	.pal-scholar-featured__info {
+		flex-wrap: wrap;
+	}
+	.pal-scholar-featured__info-item {
+		flex: 1 1 45%;
+	}
+	.pal-scholar-featured__info-item:nth-child(3) {
+		border-left: none;
+		flex: 1 1 100%;
+	}
+	.pal-scholar-featured__info-label {
+		white-space: normal;
+	}
+	.pal-scholar-featured__info-value {
+		word-break: break-word;
+	}
+}
+@media (max-width: 520px) {
+	.pal-scholar-featured {
+		padding: 28px 12px;
+	}
+	.pal-scholar-featured__info {
+		flex-direction: column;
+	}
+	.pal-scholar-featured__info-item + .pal-scholar-featured__info-item {
+		border-left: none;
+		border-top: 1px solid #dde2e8;
+	}
+	.pal-scholar-featured__title {
+		font-size: 22px;
+	}
+	.pal-scholar-featured__subtitle {
+		font-size: 22px;
+	}
+	.pal-scholar-featured__buttons {
+		flex-direction: column;
+	}
+	.pal-scholar-featured__btn {
+		justify-content: center;
+	}
+}

@@ -1,0 +1,613 @@
+/* ==========================================================================
+   Tax 990 Documents — Nashua PAL Core
+   ========================================================================== */
+
+/* ---------- Variables ---------- */
+:root {
+	--pal-tax990-radius: 16px;
+}
+
+/* ==========================================================================
+   SHORTCODE / ARCHIVE — GRID & CARDS
+   ========================================================================== */
+
+.pal-tax990-section {
+	padding: 0 0 40px;
+}
+.pal-tax990-section__eyebrow {
+	display: block;
+	text-align: center;
+	font-size: 12px;
+	font-weight: 800;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	color: #F4A51C;
+	margin-bottom: 12px;
+}
+
+/* ---------- Year filter ---------- */
+.pal-tax990-filter {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	justify-content: center;
+	margin-bottom: 28px;
+}
+.pal-tax990-filter__btn {
+	background: transparent !important;
+	border: 1.5px solid #071F3F !important;
+	color: #071F3F !important;
+	border-radius: 100px !important;
+	padding: 8px 20px !important;
+	font-size: 13px !important;
+	font-weight: 700 !important;
+	cursor: pointer;
+	transition: all 0.2s;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+.pal-tax990-filter__btn:hover {
+	background: #071F3F !important;
+	color: #fff !important;
+}
+.pal-tax990-filter__btn.is-active {
+	background: #071F3F !important;
+	color: #fff !important;
+}
+
+/* ---------- Grid ---------- */
+.pal-tax990-grid {
+	display: grid;
+	gap: 28px;
+}
+.pal-tax990-grid--cols-1 { grid-template-columns: 1fr; }
+.pal-tax990-grid--cols-2 { grid-template-columns: repeat(2, 1fr); }
+.pal-tax990-grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
+.pal-tax990-grid--cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 1024px) {
+	.pal-tax990-grid--cols-4,
+	.pal-tax990-grid--cols-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+	.pal-tax990-grid--cols-4,
+	.pal-tax990-grid--cols-3,
+	.pal-tax990-grid--cols-2 { grid-template-columns: 1fr; }
+}
+
+/* ---------- Card ---------- */
+.pal-tax990-card {
+	background: #fff;
+	border-radius: var(--pal-tax990-radius);
+	overflow: hidden;
+	box-shadow: 0 4px 20px rgba(7, 31, 63, 0.08);
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+	display: flex;
+	flex-direction: column;
+}
+.pal-tax990-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 12px 36px rgba(7, 31, 63, 0.14);
+}
+.pal-tax990-card.is-filtered-out {
+	display: none;
+}
+
+.pal-tax990-card__media {
+	position: relative;
+	aspect-ratio: 3 / 4;
+	overflow: hidden;
+	background: linear-gradient(135deg, #0a1e3d 0%, #11284D 100%);
+}
+.pal-tax990-card__cover {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+.pal-tax990-card__icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	color: rgba(255, 255, 255, 0.25);
+	font-size: 64px;
+}
+.pal-tax990-card__year-badge {
+	position: absolute;
+	top: 12px;
+	left: 12px;
+	background: #F4A51C;
+	color: #071F3F;
+	font-size: 12px;
+	font-weight: 800;
+	padding: 4px 12px;
+	border-radius: 100px;
+	letter-spacing: 0.05em;
+}
+
+.pal-tax990-card__body {
+	padding: 20px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+.pal-tax990-card__title {
+	font-size: 18px;
+	font-weight: 800;
+	color: #071F3F;
+	margin: 0 0 6px;
+	line-height: 1.3;
+}
+.pal-tax990-card__desc {
+	font-size: 14px;
+	color: #555;
+	line-height: 1.5;
+	margin: 0 0 16px;
+	flex: 1;
+}
+
+/* ---------- Card actions ---------- */
+.pal-tax990-card__actions {
+	display: flex;
+	gap: 8px;
+	margin-top: auto;
+}
+.pal-tax990-card__btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 8px 16px;
+	border-radius: 8px;
+	font-size: 13px;
+	font-weight: 700;
+	text-decoration: none;
+	transition: all 0.2s;
+	cursor: pointer;
+}
+.pal-tax990-card__btn--view {
+	background: #071F3F !important;
+	color: #fff !important;
+	border: none !important;
+}
+.pal-tax990-card__btn--view:hover {
+	background: #F4A51C !important;
+	color: #071F3F !important;
+}
+.pal-tax990-card__btn--download {
+	background: transparent !important;
+	color: #071F3F !important;
+	border: 1.5px solid #071F3F !important;
+}
+.pal-tax990-card__btn--download:hover {
+	background: #071F3F !important;
+	color: #fff !important;
+}
+
+.pal-tax990-empty {
+	text-align: center;
+	color: #999;
+	font-size: 16px;
+	padding: 40px 20px;
+}
+
+/* ==========================================================================
+   ARCHIVE PAGE
+   ========================================================================== */
+
+.pal-tax990-archive__hero {
+	background: linear-gradient(135deg, #071F3F 0%, #11284D 100%);
+	padding: 60px 20px 50px;
+	text-align: center;
+	color: #fff;
+}
+.pal-tax990-archive__hero-inner {
+	max-width: 700px;
+	margin: 0 auto;
+}
+.pal-tax990-archive__title {
+	font-size: 42px;
+	font-weight: 900;
+	margin: 0 0 12px;
+	color: #fff;
+}
+.pal-tax990-archive__subtitle {
+	font-size: 16px;
+	opacity: 0.85;
+	margin: 0;
+	line-height: 1.6;
+}
+
+/* ---------- Filters ---------- */
+.pal-tax990-archive__filters {
+	background: #f8f9fb;
+	border-bottom: 1px solid #e9ecf0;
+	padding: 20px;
+}
+.pal-tax990-archive__filters-inner {
+	max-width: 800px;
+	margin: 0 auto;
+	display: flex;
+	gap: 16px;
+	align-items: flex-end;
+	flex-wrap: wrap;
+}
+.pal-tax990-archive__filter-group {
+	flex: 1;
+	min-width: 180px;
+}
+.pal-tax990-archive__filter-group label {
+	display: block;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: #071F3F;
+	margin-bottom: 6px;
+}
+.pal-tax990-archive__filter-group select,
+.pal-tax990-archive__filter-group input {
+	width: 100%;
+	padding: 10px 14px;
+	border: 1.5px solid #d1d5db;
+	border-radius: 10px;
+	font-size: 14px;
+	background: #fff;
+	transition: border-color 0.2s;
+}
+.pal-tax990-archive__filter-group select:focus,
+.pal-tax990-archive__filter-group input:focus {
+	border-color: #F4A51C;
+	outline: none;
+}
+
+/* ---------- Archive grid ---------- */
+.pal-tax990-archive__grid-wrap {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 40px 20px 60px;
+}
+.pal-tax990-archive__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 28px;
+}
+@media (max-width: 1024px) {
+	.pal-tax990-archive__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+	.pal-tax990-archive__grid { grid-template-columns: 1fr; }
+	.pal-tax990-archive__title { font-size: 28px; }
+}
+
+.pal-tax990-archive__no-results {
+	text-align: center;
+	color: #999;
+	font-size: 16px;
+	padding: 40px 20px;
+}
+
+/* ==========================================================================
+   SINGLE PAGE
+   ========================================================================== */
+
+/* ---------- Hero ---------- */
+.pal-tax990-single__hero {
+	background: linear-gradient(135deg, #071F3F 0%, #11284D 100%);
+	padding: 50px 20px;
+	color: #fff;
+}
+.pal-tax990-single__hero-inner {
+	max-width: 1100px;
+	margin: 0 auto;
+	display: flex;
+	gap: 40px;
+	align-items: center;
+}
+.pal-tax990-single__hero-image {
+	flex: 0 0 280px;
+	max-width: 280px;
+}
+.pal-tax990-single__hero-image img {
+	width: 100%;
+	border-radius: 12px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+	display: block;
+}
+.pal-tax990-single__hero-icon {
+	width: 100%;
+	aspect-ratio: 3 / 4;
+	background: rgba(255, 255, 255, 0.06);
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 80px;
+	color: rgba(255, 255, 255, 0.2);
+}
+.pal-tax990-single__hero-content {
+	flex: 1;
+}
+.pal-tax990-single__year-badge {
+	display: inline-block;
+	background: #F4A51C;
+	color: #071F3F;
+	font-size: 13px;
+	font-weight: 800;
+	padding: 5px 16px;
+	border-radius: 100px;
+	margin-bottom: 12px;
+	letter-spacing: 0.05em;
+}
+.pal-tax990-single__title {
+	font-size: 36px;
+	font-weight: 900;
+	margin: 0 0 12px;
+	line-height: 1.2;
+	color: #fff;
+}
+.pal-tax990-single__desc {
+	font-size: 16px;
+	line-height: 1.6;
+	opacity: 0.85;
+	margin: 0 0 24px;
+}
+
+/* ---------- Hero actions ---------- */
+.pal-tax990-single__hero-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+.pal-tax990-single__hero-actions .pal-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px 24px;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 700;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	transition: all 0.2s;
+	cursor: pointer;
+}
+
+/* ---------- PDF Viewer ---------- */
+.pal-tax990-single__viewer {
+	padding: 50px 20px;
+	background: #f8f9fb;
+}
+.pal-tax990-single__viewer-inner {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+.pal-tax990-single__viewer-heading {
+	font-size: 22px;
+	font-weight: 800;
+	color: #071F3F;
+	margin: 0 0 20px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.pal-tax990-single__viewer-heading i {
+	color: #c33;
+}
+.pal-tax990-single__viewer-wrap {
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 20px rgba(7, 31, 63, 0.1);
+	background: #fff;
+}
+.pal-tax990-single__pdf-frame {
+	width: 100%;
+	height: 80vh;
+	min-height: 600px;
+	border: none;
+	display: block;
+}
+.pal-tax990-single__viewer-footer {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+	margin-top: 24px;
+}
+.pal-tax990-single__viewer-footer .pal-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px 24px;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 700;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	transition: all 0.2s;
+}
+
+/* ---------- Related ---------- */
+.pal-tax990-single__related {
+	padding: 50px 20px 60px;
+	background: #fff;
+}
+.pal-tax990-single__related-inner {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+.pal-tax990-single__related-title {
+	font-size: 26px;
+	font-weight: 900;
+	color: #071F3F;
+	margin: 0 0 24px;
+	text-align: center;
+}
+.pal-tax990-single__related-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+}
+.pal-tax990-single__related-card {
+	display: block;
+	text-decoration: none;
+	background: #fff;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 16px rgba(7, 31, 63, 0.08);
+	transition: transform 0.25s, box-shadow 0.25s;
+}
+.pal-tax990-single__related-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 10px 32px rgba(7, 31, 63, 0.14);
+}
+.pal-tax990-single__related-img {
+	width: 100%;
+	aspect-ratio: 3 / 4;
+	object-fit: cover;
+	display: block;
+}
+.pal-tax990-single__related-icon {
+	aspect-ratio: 3 / 4;
+	background: linear-gradient(135deg, #0a1e3d 0%, #11284D 100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 48px;
+	color: rgba(255, 255, 255, 0.2);
+}
+.pal-tax990-single__related-info {
+	padding: 16px;
+}
+.pal-tax990-single__related-name {
+	display: block;
+	font-size: 16px;
+	font-weight: 700;
+	color: #071F3F;
+}
+.pal-tax990-single__related-year {
+	display: block;
+	font-size: 13px;
+	color: #888;
+	margin-top: 4px;
+}
+
+/* ==========================================================================
+   PDF VIEWER MODAL
+   ========================================================================== */
+.pal-tax990-modal {
+	display: none;
+	position: fixed;
+	inset: 0;
+	z-index: 99999;
+	align-items: center;
+	justify-content: center;
+}
+.pal-tax990-modal.is-open {
+	display: flex;
+}
+.pal-tax990-modal__overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(7, 31, 63, 0.75);
+}
+.pal-tax990-modal__container {
+	position: relative;
+	width: 90vw;
+	max-width: 1000px;
+	height: 88vh;
+	background: #fff;
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+	display: flex;
+	flex-direction: column;
+}
+.pal-tax990-modal__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 24px;
+	border-bottom: 1px solid #e9ecf0;
+	background: #f8f9fb;
+	flex-shrink: 0;
+}
+.pal-tax990-modal__title {
+	font-size: 18px;
+	font-weight: 800;
+	color: #071F3F;
+	margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.pal-tax990-modal__close {
+	background: none;
+	border: none;
+	font-size: 28px;
+	line-height: 1;
+	color: #071F3F;
+	cursor: pointer;
+	padding: 0 4px;
+	transition: color 0.2s;
+	flex-shrink: 0;
+}
+.pal-tax990-modal__close:hover {
+	color: #F4A51C;
+}
+.pal-tax990-modal__body {
+	flex: 1;
+	overflow: hidden;
+}
+.pal-tax990-modal__frame {
+	width: 100%;
+	height: 100%;
+	border: none;
+	display: block;
+}
+
+@media (max-width: 600px) {
+	.pal-tax990-modal__container {
+		width: 96vw;
+		height: 92vh;
+		border-radius: 10px;
+	}
+	.pal-tax990-modal__header {
+		padding: 12px 16px;
+	}
+	.pal-tax990-modal__title {
+		font-size: 15px;
+	}
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+	.pal-tax990-single__hero-inner {
+		flex-direction: column;
+		text-align: center;
+	}
+	.pal-tax990-single__hero-image {
+		flex: 0 0 auto;
+		max-width: 200px;
+		margin: 0 auto;
+	}
+	.pal-tax990-single__hero-actions {
+		justify-content: center;
+	}
+	.pal-tax990-single__title {
+		font-size: 28px;
+	}
+	.pal-tax990-single__pdf-frame {
+		height: 60vh;
+		min-height: 400px;
+	}
+	.pal-tax990-single__related-grid {
+		grid-template-columns: 1fr;
+	}
+	.pal-tax990-single__viewer-footer {
+		flex-direction: column;
+		align-items: center;
+	}
+}

@@ -1,0 +1,2169 @@
+/* ==========================================================================
+   Night of Champions — Nashua PAL Core
+   ========================================================================== */
+
+:root {
+	--pal-champ-blue: #11284D;
+	--pal-champ-gold: #F2B134;
+	--pal-champ-gold-dark: #d99c1e;
+	--pal-champ-light: #F8F9FB;
+	--pal-champ-text: #1D2433;
+	--pal-champ-gray: #64748B;
+	--pal-champ-border: #E2E8F0;
+	--pal-champ-radius: 18px;
+	--pal-champ-shadow: 0 8px 30px rgba(17, 40, 77, 0.10);
+	--pal-champ-shadow-hover: 0 16px 40px rgba(17, 40, 77, 0.18);
+}
+
+/* ==========================================================================
+   Section Layout
+   ========================================================================== */
+
+.pal-champ-section {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 48px 20px;
+}
+
+.pal-champ-section__eyebrow {
+	display: block;
+	text-align: center;
+	color: var(--pal-champ-gold-dark);
+	font-family: Montserrat, sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	font-size: 0.75rem;
+	margin-bottom: 8px;
+}
+
+.pal-champ-section__title {
+	font-size: 32px;
+	font-weight: 800;
+	color: var(--pal-champ-blue);
+	text-align: center;
+	margin: 0 0 36px;
+	letter-spacing: -0.02em;
+	text-transform: uppercase;
+}
+
+.pal-champ-section__footer {
+	text-align: center;
+	margin-top: 36px;
+}
+
+.pal-champ-section__view-all {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 13px 28px;
+	border: 2px solid var(--pal-champ-blue);
+	border-radius: 8px;
+	color: var(--pal-champ-blue);
+	font-family: Montserrat, sans-serif;
+	font-weight: 700;
+	font-size: 0.88rem;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	transition: all 0.2s ease;
+}
+
+.pal-champ-section__view-all:hover {
+	background: var(--pal-champ-blue);
+	color: #fff;
+}
+
+.pal-champ-section__view-all .fa-arrow-right {
+	font-size: 12px;
+}
+
+.pal-champ-empty {
+	text-align: center;
+	color: var(--pal-champ-gray);
+	font-size: 16px;
+	padding: 40px 20px;
+}
+
+/* ==========================================================================
+   Button Reset — override Hello Elementor theme defaults on <button>
+   ========================================================================== */
+
+.pal-champ-filter__btn,
+.pal-noc-past__tab,
+.pal-noc-lightbox__close,
+.pal-noc-lightbox__nav,
+.pal-noc-gallery__btn {
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	appearance: none !important;
+	font-family: Montserrat, sans-serif !important;
+	line-height: 1.4 !important;
+}
+
+/* ==========================================================================
+   Filter Tabs
+   ========================================================================== */
+
+.pal-champ-filter {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	gap: 10px;
+	margin-bottom: 32px;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	max-width: 100%;
+}
+
+.pal-champ-filter::-webkit-scrollbar {
+	display: none;
+}
+
+.pal-champ-filter__btn {
+	display: inline-flex !important;
+	align-items: center !important;
+	padding: 10px 22px !important;
+	border: 2px solid #11284D !important;
+	border-radius: 50px !important;
+	background: transparent !important;
+	color: #11284D !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	cursor: pointer !important;
+	transition: all 0.2s ease !important;
+	white-space: nowrap !important;
+	outline: none !important;
+	flex-shrink: 0 !important;
+}
+
+.pal-champ-filter__btn:hover {
+	background: #11284D !important;
+	color: #fff !important;
+}
+
+.pal-champ-filter__btn.is-active {
+	background: #11284D !important;
+	color: #fff !important;
+}
+
+/* ==========================================================================
+   Card Grid
+   ========================================================================== */
+
+.pal-champ-grid {
+	display: grid;
+	gap: 28px;
+}
+
+.pal-champ-grid--cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pal-champ-grid--cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pal-champ-grid--cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.pal-champ-grid--cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+@media (max-width: 1024px) {
+	.pal-champ-grid--cols-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.pal-champ-grid--cols-5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 768px) {
+	.pal-champ-grid--cols-3,
+	.pal-champ-grid--cols-4,
+	.pal-champ-grid--cols-5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+	.pal-champ-grid { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   Winner Card
+   ========================================================================== */
+
+.pal-champ-card {
+	background: #fff;
+	border-radius: var(--pal-champ-radius);
+	overflow: hidden;
+	box-shadow: var(--pal-champ-shadow);
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pal-champ-card:hover {
+	transform: translateY(-5px);
+	box-shadow: var(--pal-champ-shadow-hover);
+}
+
+.pal-champ-card.is-filtered-out {
+	display: none;
+}
+
+/* Winner rotation — smooth slide transition */
+[data-champ-rotate] {
+	overflow: hidden;
+	transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-champ-rotate].is-sliding-out {
+	transform: translateX(-30px);
+	opacity: 0;
+}
+[data-champ-rotate].is-sliding-in-prep {
+	transform: translateX(30px);
+	opacity: 0;
+	transition: none;
+}
+[data-champ-rotate].is-sliding-in {
+	transform: translateX(0);
+	opacity: 1;
+}
+.pal-champ-card.is-rotated-out,
+.pal-champ-featured-card.is-rotated-out {
+	display: none;
+}
+
+/* Rotation page indicators */
+.pal-champ-rotate-dots {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 6px;
+	margin-top: 24px;
+}
+button.pal-champ-rotate-dot,
+button.pal-champ-rotate-dot:focus,
+button.pal-champ-rotate-dot:active,
+button.pal-champ-rotate-dot:hover {
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	appearance: none !important;
+	outline: none !important;
+	border: none !important;
+	border-radius: 2px !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	box-shadow: none !important;
+	text-indent: -9999px;
+	overflow: hidden;
+	font-size: 0 !important;
+	line-height: 0 !important;
+	min-width: 0 !important;
+	min-height: 0 !important;
+	width: 28px;
+	height: 4px;
+	background: var(--pal-champ-blue, #11284D) !important;
+	opacity: 0.2;
+	cursor: pointer;
+	transition: width 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+}
+button.pal-champ-rotate-dot:hover {
+	opacity: 0.45;
+}
+button.pal-champ-rotate-dot.is-active,
+button.pal-champ-rotate-dot.is-active:focus,
+button.pal-champ-rotate-dot.is-active:active {
+	width: 40px;
+	opacity: 1;
+	background: var(--pal-champ-gold, #F2B134) !important;
+}
+
+/* Indicators inside Past Champions (dark background) */
+.pal-noc-past .pal-champ-rotate-dots {
+	margin-top: 28px;
+}
+.pal-noc-past button.pal-champ-rotate-dot,
+.pal-noc-past button.pal-champ-rotate-dot:focus,
+.pal-noc-past button.pal-champ-rotate-dot:active {
+	background: rgba(255, 255, 255, 0.25) !important;
+	opacity: 1;
+}
+.pal-noc-past button.pal-champ-rotate-dot:hover {
+	background: rgba(255, 255, 255, 0.45) !important;
+}
+.pal-noc-past button.pal-champ-rotate-dot.is-active,
+.pal-noc-past button.pal-champ-rotate-dot.is-active:focus {
+	background: var(--pal-champ-gold, #F2B134) !important;
+}
+
+.pal-champ-card__link {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	text-decoration: none;
+	color: inherit;
+}
+
+.pal-champ-card__media {
+	position: relative;
+	aspect-ratio: 4/3;
+	background: var(--pal-champ-light) top center/cover no-repeat;
+	overflow: hidden;
+}
+
+.pal-champ-card__media::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, transparent 50%, rgba(17, 40, 77, 0.08) 100%);
+	pointer-events: none;
+}
+
+/* Category badge */
+.pal-champ-card__badge {
+	position: absolute;
+	top: 14px;
+	left: 14px;
+	z-index: 2;
+	padding: 5px 12px;
+	border-radius: 50px;
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	line-height: 1;
+}
+
+.pal-champ-card__badge--youth {
+	background: var(--pal-champ-gold);
+	color: var(--pal-champ-blue);
+}
+
+.pal-champ-card__badge--community {
+	background: var(--pal-champ-blue);
+	color: #fff;
+}
+
+.pal-champ-card__badge--law_enforcement {
+	background: #1E40AF;
+	color: #fff;
+}
+
+.pal-champ-card__badge--special_recognition {
+	background: #7C3AED;
+	color: #fff;
+}
+
+/* Play button overlay */
+.pal-champ-card__play {
+	position: absolute;
+	bottom: 14px;
+	right: 14px;
+	z-index: 2;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: var(--pal-champ-gold);
+	color: var(--pal-champ-blue);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+	transition: transform 0.2s ease;
+}
+
+.pal-champ-card:hover .pal-champ-card__play {
+	transform: scale(1.1);
+}
+
+/* Card body */
+.pal-champ-card__body {
+	padding: 20px 22px 24px;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.pal-champ-card__name {
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--pal-champ-blue);
+	margin: 0 0 4px;
+	line-height: 1.3;
+}
+
+.pal-champ-card__award {
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--pal-champ-gold-dark);
+	margin: 0 0 6px;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+}
+
+.pal-champ-card__year {
+	font-size: 12px;
+	color: var(--pal-champ-gray);
+	margin: 0 0 8px;
+}
+
+.pal-champ-card__bio {
+	font-size: 14px;
+	color: var(--pal-champ-gray);
+	line-height: 1.55;
+	margin: 0 0 16px;
+	flex: 1;
+}
+
+.pal-champ-card__cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--pal-champ-blue);
+	margin-top: auto;
+	transition: color 0.2s ease;
+}
+
+.pal-champ-card:hover .pal-champ-card__cta {
+	color: var(--pal-champ-gold-dark);
+}
+
+/* ==========================================================================
+   Legacy Card (name-only, no photo/bio)
+   ========================================================================== */
+
+.pal-champ-card--legacy {
+	cursor: default;
+}
+
+.pal-champ-card--legacy:hover {
+	transform: none;
+	box-shadow: var(--pal-champ-shadow);
+}
+
+.pal-champ-card--legacy .pal-champ-card__link {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	text-decoration: none;
+	color: inherit;
+}
+
+.pal-champ-card--legacy .pal-champ-card__media {
+	background: linear-gradient(135deg, var(--pal-champ-blue) 0%, #1a3a6a 100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pal-champ-card__initials {
+	font-family: Montserrat, sans-serif;
+	font-size: 48px;
+	font-weight: 800;
+	color: rgba(255, 255, 255, 0.18);
+	letter-spacing: 0.06em;
+	z-index: 1;
+	line-height: 1;
+	user-select: none;
+}
+
+.pal-champ-card__cta .fa-arrow-right {
+	font-size: 11px;
+	transition: transform 0.2s ease;
+}
+
+.pal-champ-card:hover .pal-champ-card__cta .fa-arrow-right {
+	transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Featured Champion Cards (Larger)
+   ========================================================================== */
+
+.pal-champ-featured-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 32px;
+}
+
+@media (max-width: 768px) {
+	.pal-champ-featured-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 20px;
+	}
+}
+
+@media (max-width: 560px) {
+	.pal-champ-featured-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.pal-champ-featured-card {
+	display: flex;
+	flex-direction: column;
+	background: #fff;
+	border-radius: var(--pal-champ-radius);
+	overflow: hidden;
+	box-shadow: var(--pal-champ-shadow);
+	text-decoration: none;
+	color: inherit;
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+	border: 3px solid transparent;
+}
+
+.pal-champ-featured-card:hover {
+	transform: translateY(-6px);
+	box-shadow: var(--pal-champ-shadow-hover);
+	border-color: var(--pal-champ-gold);
+}
+
+.pal-champ-featured-card__media {
+	position: relative;
+	aspect-ratio: 3/4;
+	background: var(--pal-champ-light) top center/cover no-repeat;
+	overflow: hidden;
+}
+
+.pal-champ-featured-card__media::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, transparent 40%, rgba(17, 40, 77, 0.15) 100%);
+	pointer-events: none;
+}
+
+.pal-champ-featured-card__body {
+	padding: 22px 24px 26px;
+	text-align: center;
+}
+
+.pal-champ-featured-card__award {
+	font-size: 12px;
+	font-weight: 700;
+	color: var(--pal-champ-gold-dark);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	margin: 0 0 6px;
+}
+
+.pal-champ-featured-card__name {
+	font-size: 20px;
+	font-weight: 800;
+	color: var(--pal-champ-blue);
+	margin: 0 0 4px;
+	line-height: 1.25;
+}
+
+.pal-champ-featured-card__org {
+	font-size: 14px;
+	color: var(--pal-champ-gray);
+	margin: 0;
+}
+
+/* ==========================================================================
+   Sponsors Section
+   ========================================================================== */
+
+.pal-champ-sponsors {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 48px 20px 56px;
+}
+
+.pal-champ-sponsors__heading {
+	font-size: 28px;
+	font-weight: 800;
+	color: var(--pal-champ-blue);
+	text-align: center;
+	margin: 0 0 40px;
+}
+
+/* Sponsor filter — no extra overrides needed, base .pal-champ-filter handles scroll */
+
+/* Force Elementor widget containers to allow overflow for tab scroll */
+.elementor-widget-pal_champions_sponsors .elementor-widget-container,
+.elementor-widget-pal_champions_winners .elementor-widget-container,
+.elementor-widget-pal_noc_past_champions .elementor-widget-container {
+	overflow: visible !important;
+}
+
+.pal-champ-sponsors {
+	overflow: visible !important;
+}
+
+/* "All" combined row — uniform logo sizing + badge layout */
+.pal-champ-sponsors__tier--all .pal-champ-sponsors__logo img {
+	max-height: 80px;
+	width: auto;
+}
+
+.pal-champ-sponsors__logo--badged {
+	flex-direction: column !important;
+	gap: 8px;
+}
+
+.pal-champ-sponsors__level-badge {
+	display: inline-block;
+	padding: 3px 12px;
+	border-radius: 20px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	line-height: 1.4;
+	background: #11284D;
+	color: #fff;
+}
+
+.pal-champ-sponsors__tier {
+	margin-bottom: 36px;
+}
+
+.pal-champ-sponsors__tier:last-child {
+	margin-bottom: 0;
+}
+
+.pal-champ-sponsors__tier-label {
+	font-size: 16px;
+	font-weight: 700;
+	color: var(--pal-champ-gray);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	text-align: center;
+	margin: 0 0 20px;
+}
+
+.pal-champ-sponsors__logos {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 28px;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	padding-bottom: 4px;
+}
+
+.pal-champ-sponsors__logos::-webkit-scrollbar {
+	display: none;
+}
+
+.pal-champ-sponsors__logos .pal-champ-sponsors__logo {
+	flex-shrink: 0;
+}
+
+.pal-champ-sponsors__logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.pal-champ-sponsors__logo:hover {
+	transform: scale(1.05);
+}
+
+.pal-champ-sponsors__tier--presenting .pal-champ-sponsors__logo img {
+	max-height: 140px;
+	width: auto;
+}
+
+.pal-champ-sponsors__tier--gold .pal-champ-sponsors__logo img {
+	max-height: 110px;
+	width: auto;
+}
+
+.pal-champ-sponsors__tier--silver .pal-champ-sponsors__logo img {
+	max-height: 90px;
+	width: auto;
+}
+
+.pal-champ-sponsors__tier--community .pal-champ-sponsors__logo img {
+	max-height: 80px;
+	width: auto;
+}
+
+/* Marquee sponsor row (> 6 logos) */
+.pal-champ-sponsors__marquee {
+	overflow: hidden;
+	position: relative;
+}
+
+.pal-champ-sponsors__track {
+	display: flex;
+	align-items: center;
+	gap: 40px;
+	width: max-content;
+	animation: pal-sponsor-scroll var(--pal-sponsor-speed, 30s) linear infinite;
+}
+
+.pal-champ-sponsors__marquee:hover .pal-champ-sponsors__track {
+	animation-play-state: paused;
+}
+
+@keyframes pal-sponsor-scroll {
+	0%   { transform: translateX(0); }
+	100% { transform: translateX(-50%); }
+}
+
+.pal-champ-sponsors__name-text {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--pal-champ-blue);
+	padding: 10px 18px;
+	background: var(--pal-champ-light);
+	border-radius: 8px;
+}
+
+/* ==========================================================================
+   Shared Sponsor Marquee — Events & Programs  [pal_sponsors]
+   Same visual pattern as Night of Champions; separate class prefix so the
+   two systems can be styled independently if needed.
+   ========================================================================== */
+
+.pal-sponsors {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 48px 20px 56px;
+	overflow: visible !important;
+}
+.pal-sponsors__heading {
+	font-size: 28px;
+	font-weight: 800;
+	color: var(--pal-champ-blue, #11284D);
+	text-align: center;
+	margin: 0 0 40px;
+}
+.pal-sponsors__tier { margin-bottom: 36px; }
+.pal-sponsors__tier:last-child { margin-bottom: 0; }
+.pal-sponsors__tier--all .pal-sponsors__logo img {
+	max-height: 80px;
+	width: auto;
+}
+.pal-sponsors__logo--badged {
+	flex-direction: column !important;
+	gap: 8px;
+}
+.pal-sponsors__level-badge {
+	display: inline-block;
+	padding: 3px 12px;
+	border-radius: 20px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	line-height: 1.4;
+	background: #11284D;
+	color: #fff;
+}
+.pal-sponsors__logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.pal-sponsors__logo:hover { transform: scale(1.05); }
+.pal-sponsors__marquee {
+	overflow: hidden;
+	position: relative;
+}
+.pal-sponsors__track {
+	display: flex;
+	align-items: center;
+	gap: 40px;
+	width: max-content;
+	animation: pal-sponsor-scroll 30s linear infinite;
+}
+.pal-sponsors__marquee:hover .pal-sponsors__track {
+	animation-play-state: paused;
+}
+.pal-sponsors__name-text {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--pal-champ-blue, #11284D);
+	padding: 10px 18px;
+	background: var(--pal-champ-light, #F8F9FB);
+	border-radius: 8px;
+}
+
+/* ==========================================================================
+   Single Winner Page
+   ========================================================================== */
+
+.pal-champ-single__hero {
+	background: var(--pal-champ-blue);
+	padding: 0;
+}
+
+.pal-champ-single__hero-inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 420px 1fr;
+	gap: 48px;
+	align-items: center;
+	padding: 60px 20px;
+}
+
+@media (max-width: 900px) {
+	.pal-champ-single__hero-inner {
+		grid-template-columns: 1fr;
+		gap: 24px;
+		padding: 40px 20px;
+	}
+}
+
+.pal-champ-single__hero-image {
+	border-radius: var(--pal-champ-radius);
+	overflow: hidden;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.pal-champ-single__hero-image img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.pal-champ-single__hero-content {
+	color: #fff;
+}
+
+.pal-champ-single__category {
+	display: inline-block;
+	padding: 6px 16px;
+	background: var(--pal-champ-gold);
+	color: var(--pal-champ-blue);
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	border-radius: 50px;
+	margin-bottom: 16px;
+}
+
+.pal-champ-single__name {
+	font-size: 42px;
+	font-weight: 800;
+	color: #fff;
+	margin: 0 0 8px;
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+}
+
+.pal-champ-single__award {
+	font-size: 20px;
+	font-weight: 600;
+	color: var(--pal-champ-gold);
+	margin: 0 0 20px;
+}
+
+.pal-champ-single__meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.pal-champ-single__meta-item {
+	font-size: 15px;
+	opacity: 0.85;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.pal-champ-single__meta-item i {
+	color: var(--pal-champ-gold);
+	font-size: 14px;
+}
+
+/* Content area */
+.pal-champ-single__content-wrap {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 48px 20px 56px;
+}
+
+.pal-champ-single__content {
+	font-size: 17px;
+	line-height: 1.75;
+	color: var(--pal-champ-text);
+}
+
+.pal-champ-single__content p {
+	margin: 0 0 20px;
+}
+
+.pal-champ-single__content h2,
+.pal-champ-single__content h3 {
+	color: var(--pal-champ-blue);
+	margin: 32px 0 12px;
+}
+
+/* Video embed */
+.pal-champ-single__video {
+	margin: 32px 0;
+}
+
+.pal-champ-single__video-wrap {
+	position: relative;
+	padding-bottom: 56.25%;
+	height: 0;
+	overflow: hidden;
+	border-radius: var(--pal-champ-radius);
+	box-shadow: var(--pal-champ-shadow);
+}
+
+.pal-champ-single__video-wrap iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* External link */
+.pal-champ-single__ext-link {
+	margin: 24px 0;
+}
+
+/* Back button */
+.pal-champ-single__back {
+	margin-top: 40px;
+	padding-top: 32px;
+	border-top: 1px solid var(--pal-champ-border);
+}
+
+/* Related winners */
+.pal-champ-single__related {
+	background: var(--pal-champ-light);
+	padding: 56px 0;
+}
+
+.pal-champ-single__related-inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+	.pal-champ-single__name {
+		font-size: 28px;
+	}
+	.pal-champ-single__award {
+		font-size: 16px;
+	}
+}
+
+/* ==========================================================================
+   Archive Page
+   ========================================================================== */
+
+.pal-champ-archive__hero {
+	background: var(--pal-champ-blue);
+	text-align: center;
+	padding: 72px 20px 56px;
+	color: #fff;
+}
+
+.pal-champ-archive__hero-inner {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+.pal-champ-archive__eyebrow {
+	font-size: 13px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: var(--pal-champ-gold);
+	margin: 0 0 12px;
+}
+
+.pal-champ-archive__title {
+	font-size: 44px;
+	font-weight: 800;
+	color: #fff;
+	margin: 0 0 16px;
+	letter-spacing: -0.02em;
+}
+
+.pal-champ-archive__subtitle {
+	font-size: 17px;
+	opacity: 0.8;
+	margin: 0;
+	line-height: 1.6;
+}
+
+/* Filters bar */
+.pal-champ-archive__filters {
+	background: #fff;
+	border-bottom: 1px solid var(--pal-champ-border);
+	padding: 24px 20px;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+
+.pal-champ-archive__filters-inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	align-items: flex-end;
+}
+
+.pal-champ-archive__filter-group {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.pal-champ-archive__filter-group label {
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--pal-champ-gray);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.pal-champ-archive__filter-group select,
+.pal-champ-archive__filter-group input[type="text"] {
+	padding: 10px 14px;
+	border: 2px solid var(--pal-champ-border);
+	border-radius: 10px;
+	font-size: 14px;
+	color: var(--pal-champ-text);
+	background: #fff;
+	min-width: 180px;
+	transition: border-color 0.2s ease;
+}
+
+.pal-champ-archive__filter-group select:focus,
+.pal-champ-archive__filter-group input[type="text"]:focus {
+	outline: none;
+	border-color: var(--pal-champ-blue);
+}
+
+.pal-champ-archive__filter-group--search {
+	flex: 1;
+	min-width: 200px;
+}
+
+.pal-champ-archive__filter-group--search input {
+	width: 100%;
+}
+
+@media (max-width: 600px) {
+	.pal-champ-archive__filters-inner {
+		flex-direction: column;
+	}
+	.pal-champ-archive__filter-group {
+		width: 100%;
+	}
+	.pal-champ-archive__filter-group select,
+	.pal-champ-archive__filter-group input[type="text"] {
+		width: 100%;
+		min-width: 0;
+	}
+}
+
+/* Content area */
+.pal-champ-archive__content {
+	background: var(--pal-champ-light);
+	padding: 48px 0 64px;
+}
+
+.pal-champ-archive__grid-wrap {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.pal-champ-archive__no-results {
+	text-align: center;
+	color: var(--pal-champ-gray);
+	font-size: 16px;
+	padding: 40px 20px;
+}
+
+@media (max-width: 768px) {
+	.pal-champ-archive__title {
+		font-size: 30px;
+	}
+	.pal-champ-archive__hero {
+		padding: 48px 20px 40px;
+	}
+}
+
+/* ==========================================================================
+   Night of Champions — SECTION 1: Hero
+   ========================================================================== */
+
+.pal-noc-hero {
+	position: relative;
+	width: 100%;
+	height: 520px;
+	background: #071F3F center center / cover no-repeat;
+	overflow: hidden;
+}
+
+.pal-noc-hero__overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to right, rgba(7, 31, 63, 0.85) 0%, rgba(7, 31, 63, 0.55) 50%, rgba(7, 31, 63, 0.25) 100%);
+	z-index: 1;
+}
+
+.pal-noc-hero__container {
+	position: relative;
+	z-index: 2;
+	max-width: 1280px;
+	width: 90%;
+	margin: 0 auto;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	padding: 60px 0 120px;
+	box-sizing: border-box;
+}
+
+.pal-noc-hero__content {
+	max-width: 780px;
+	text-align: left;
+	padding-left: 40px;
+}
+
+.pal-noc-hero__eyebrow {
+	display: block;
+	color: #F4A51C;
+	font-family: Montserrat, sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	margin-bottom: 16px;
+}
+
+.pal-noc-hero__title {
+	font-family: Montserrat, sans-serif;
+	font-size: 3.6rem;
+	font-weight: 900;
+	color: #fff;
+	line-height: 1.05;
+	margin: 0 0 20px;
+	letter-spacing: -0.02em;
+	text-transform: uppercase;
+}
+
+.pal-noc-hero__desc {
+	color: rgba(255,255,255,0.85);
+	font-size: 1rem;
+	line-height: 1.7;
+	margin: 0 0 32px;
+	max-width: 520px;
+}
+
+.pal-noc-hero__buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.pal-noc-hero__btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 18px;
+	border-radius: 8px;
+	font-family: Montserrat, sans-serif;
+	font-weight: 700;
+	font-size: 0.82rem;
+	text-decoration: none;
+	transition: all 0.2s ease;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	white-space: nowrap;
+}
+
+.pal-noc-hero__btn--primary {
+	background: #F4A51C;
+	color: #071F3F;
+}
+
+.pal-noc-hero__btn--primary:hover {
+	background: #d68f0e;
+}
+
+.pal-noc-hero__btn--outline {
+	background: transparent;
+	color: #fff;
+	border: 2px solid rgba(255,255,255,0.35);
+}
+
+.pal-noc-hero__btn--outline:hover {
+	background: rgba(255,255,255,0.1);
+	border-color: #fff;
+}
+
+@media (max-width: 1024px) {
+	.pal-noc-hero { height: 460px; }
+	.pal-noc-hero__container { padding: 50px 0 100px; }
+	.pal-noc-hero__title { font-size: 2.8rem; }
+}
+
+@media (max-width: 768px) {
+	.pal-noc-hero { height: 420px; }
+	.pal-noc-hero__container { padding: 40px 0 90px; }
+	.pal-noc-hero__title { font-size: 2.2rem; }
+}
+
+@media (max-width: 480px) {
+	.pal-noc-hero__title { font-size: 1.8rem; }
+	.pal-noc-hero__buttons { flex-direction: column; }
+	.pal-noc-hero__btn { width: 100%; text-align: center; }
+}
+
+/* ==========================================================================
+   Night of Champions — SECTION 2: Floating Stats Card
+   ========================================================================== */
+
+.pal-noc-stats-section {
+	position: relative;
+	z-index: 20;
+	margin-top: -50px;
+	background: transparent;
+}
+
+.pal-noc-stats-card {
+	width: 85%;
+	max-width: 740px;
+	margin: 0 auto;
+	background: #FFFFFF;
+	border-radius: 60px;
+	padding: 20px 40px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 24px;
+}
+
+.pal-noc-stats-card__item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 12px;
+	flex: 1;
+	justify-content: center;
+}
+
+.pal-noc-stats-card__icon {
+	width: 48px;
+	height: 48px;
+	min-width: 48px;
+	background: #11284D;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pal-noc-stats-card__icon i {
+	color: #F2B134;
+	font-size: 20px;
+}
+
+.pal-noc-stats-card__text {
+	display: flex;
+	flex-direction: column;
+}
+
+.pal-noc-stats-card__number {
+	display: block;
+	font-family: Montserrat, sans-serif;
+	font-size: 26px;
+	font-weight: 800;
+	color: #11284D;
+	line-height: 1.1;
+}
+
+.pal-noc-stats-card__label {
+	display: block;
+	font-family: Montserrat, sans-serif;
+	font-size: 12px;
+	color: #5B6472;
+	font-weight: 500;
+	line-height: 1.3;
+}
+
+.pal-noc-stats-card__divider {
+	width: 1px;
+	height: 50px;
+	background: #E7EAF0;
+	flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+	.pal-noc-stats-section { margin-top: -45px; }
+	.pal-noc-stats-card { padding: 18px 28px; gap: 16px; }
+	.pal-noc-stats-card__icon { width: 42px; height: 42px; min-width: 42px; }
+	.pal-noc-stats-card__icon i { font-size: 18px; }
+	.pal-noc-stats-card__number { font-size: 22px; }
+	.pal-noc-stats-card__label { font-size: 11px; }
+	.pal-noc-stats-card__divider { height: 42px; }
+}
+
+@media (max-width: 768px) {
+	.pal-noc-stats-section { margin-top: -40px; }
+	.pal-noc-stats-card { padding: 16px 20px; border-radius: 40px; width: 92%; gap: 12px; }
+	.pal-noc-stats-card__item { gap: 8px; }
+	.pal-noc-stats-card__icon { width: 38px; height: 38px; min-width: 38px; }
+	.pal-noc-stats-card__icon i { font-size: 16px; }
+	.pal-noc-stats-card__number { font-size: 20px; }
+	.pal-noc-stats-card__label { font-size: 10px; }
+	.pal-noc-stats-card__divider { height: 36px; }
+}
+
+@media (max-width: 480px) {
+	.pal-noc-stats-card {
+		flex-direction: row;
+		flex-wrap: nowrap;
+		gap: 0;
+		padding: 16px 8px;
+		border-radius: 16px;
+		width: 92%;
+	}
+	/* Icon on top, number + label below — matches values-bar layout */
+	.pal-noc-stats-card__item {
+		flex: 1 1 0;
+		min-width: 0;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 6px;
+		padding: 4px 6px;
+	}
+	.pal-noc-stats-card__icon { width: 32px; height: 32px; min-width: 32px; }
+	.pal-noc-stats-card__icon i { font-size: 14px; }
+	.pal-noc-stats-card__number { font-size: 15px; }
+	.pal-noc-stats-card__label { font-size: 8px; line-height: 1.2; }
+	.pal-noc-stats-card__text { align-items: center; }
+	.pal-noc-stats-card__divider { width: 1px; height: 50px; }
+}
+
+/* ==========================================================================
+   Night of Champions — About / "Honoring Excellence" Section
+   ========================================================================== */
+
+.pal-noc-about {
+	background: #fff;
+	padding: 28px 0 70px;
+}
+
+.pal-noc-about__inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 40px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 48px;
+	align-items: center;
+}
+
+.pal-noc-about--reversed .pal-noc-about__inner {
+	direction: rtl;
+}
+
+.pal-noc-about--reversed .pal-noc-about__inner > * {
+	direction: ltr;
+}
+
+.pal-noc-about__media {
+	position: relative;
+}
+
+.pal-noc-about__image {
+	width: 100%;
+	min-height: 380px;
+	border-radius: 12px;
+	background: center/cover no-repeat;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.pal-noc-about__image--placeholder {
+	background: var(--pal-champ-light);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pal-noc-about__image--placeholder::after {
+	content: 'Upload a photo in Elementor';
+	color: var(--pal-champ-gray);
+	font-size: 14px;
+	font-family: Montserrat, sans-serif;
+}
+
+.pal-noc-about__content {
+	padding: 20px 0;
+}
+
+.pal-noc-about__eyebrow {
+	display: inline-block;
+	color: var(--pal-champ-gold-dark);
+	font-family: Montserrat, sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	font-size: 0.78rem;
+	margin-bottom: 14px;
+}
+
+.pal-noc-about__title {
+	font-family: Montserrat, sans-serif;
+	font-weight: 800;
+	font-size: clamp(1.6rem, 3vw, 2.4rem);
+	color: var(--pal-champ-blue);
+	margin: 0 0 20px;
+	line-height: 1.1;
+	text-transform: uppercase;
+}
+
+.pal-noc-about__desc {
+	color: var(--pal-champ-gray);
+	font-size: 1.02rem;
+	line-height: 1.7;
+	margin: 0 0 16px;
+	max-width: 520px;
+}
+
+.pal-noc-about__btn {
+	display: inline-flex;
+	align-items: center;
+	margin-top: 12px;
+	padding: 12px 24px;
+	border: 2px solid var(--pal-champ-blue);
+	border-radius: 8px;
+	color: var(--pal-champ-blue);
+	font-family: Montserrat, sans-serif;
+	font-weight: 700;
+	font-size: 0.88rem;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	transition: all 0.2s ease;
+}
+
+.pal-noc-about__btn:hover {
+	background: var(--pal-champ-blue);
+	color: #fff;
+}
+
+@media (max-width: 900px) {
+	.pal-noc-about__inner {
+		grid-template-columns: 1fr;
+		gap: 30px;
+		padding: 0 20px;
+	}
+	.pal-noc-about--reversed .pal-noc-about__inner {
+		direction: ltr;
+	}
+	.pal-noc-about__image {
+		min-height: 260px;
+	}
+}
+
+/* ==========================================================================
+   Night of Champions — Past Champions with Year Tabs
+   ========================================================================== */
+
+.pal-noc-past {
+	background: var(--pal-champ-blue);
+	padding: 60px 0 72px;
+}
+
+.pal-noc-past__inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+	text-align: center;
+}
+
+.pal-noc-past__eyebrow {
+	display: inline-block;
+	color: var(--pal-champ-gold);
+	font-family: Montserrat, sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	font-size: 0.78rem;
+	margin-bottom: 10px;
+}
+
+.pal-noc-past__title {
+	font-family: Montserrat, sans-serif;
+	font-weight: 800;
+	font-size: clamp(1.6rem, 3vw, 2.2rem);
+	color: #fff;
+	margin: 0 0 28px;
+}
+
+/* Filter bar */
+.pal-noc-past__filters {
+	display: flex;
+	align-items: flex-end;
+	gap: 16px;
+	margin-bottom: 32px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.pal-noc-past__filter-group {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	text-align: left;
+}
+
+.pal-noc-past__filter-group label {
+	font-family: Montserrat, sans-serif;
+	font-size: 11px;
+	font-weight: 600;
+	color: rgba(255, 255, 255, 0.5);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+}
+
+.pal-noc-past__filter-group select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 8px;
+	color: #fff;
+	font-family: Montserrat, sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 9px 36px 9px 14px;
+	cursor: pointer;
+	outline: none;
+	transition: border-color 0.2s ease, background 0.2s ease;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 12px center;
+	min-width: 140px;
+}
+
+.pal-noc-past__filter-group select:hover,
+.pal-noc-past__filter-group select:focus {
+	border-color: rgba(255, 255, 255, 0.45);
+	background-color: rgba(255, 255, 255, 0.12);
+}
+
+.pal-noc-past__filter-group select option {
+	background: var(--pal-champ-blue);
+	color: #fff;
+}
+
+.pal-noc-past__clear-btn {
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	appearance: none !important;
+	border: none !important;
+	background: none !important;
+	color: rgba(255, 255, 255, 0.45) !important;
+	font-family: Montserrat, sans-serif !important;
+	font-size: 12px !important;
+	font-weight: 600 !important;
+	cursor: pointer !important;
+	padding: 9px 4px !important;
+	transition: color 0.2s ease !important;
+	white-space: nowrap !important;
+}
+
+.pal-noc-past__clear-btn:hover {
+	color: #F4A51C !important;
+}
+
+@media (max-width: 560px) {
+	.pal-noc-past__filters {
+		gap: 12px;
+	}
+	.pal-noc-past__filter-group {
+		flex: 1 1 calc(50% - 6px);
+		min-width: 0;
+	}
+	.pal-noc-past__filter-group select {
+		width: 100%;
+		min-width: 0;
+	}
+}
+
+.pal-noc-past__panel.is-hidden {
+	display: none;
+}
+
+.pal-noc-past__grid {
+	display: flex !important;
+	flex-wrap: nowrap !important;
+	gap: 14px;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	padding-bottom: 4px;
+}
+.pal-noc-past__grid::-webkit-scrollbar { display: none; }
+.pal-noc-past__grid .pal-champ-card {
+	text-align: left;
+	flex: 0 0 170px;
+	min-width: 170px;
+}
+.pal-noc-past__grid .pal-champ-card__media {
+	aspect-ratio: 1/1;
+}
+.pal-noc-past__grid .pal-champ-card__body {
+	padding: 8px 10px 12px;
+}
+.pal-noc-past__grid .pal-champ-card__name {
+	font-size: 12px;
+	margin-bottom: 2px;
+}
+.pal-noc-past__grid .pal-champ-card__award {
+	font-size: 10px;
+	margin-bottom: 2px;
+}
+.pal-noc-past__grid .pal-champ-card__year {
+	font-size: 10px;
+	margin-bottom: 4px;
+}
+.pal-noc-past__grid .pal-champ-card__bio {
+	display: none;
+}
+.pal-noc-past__grid .pal-champ-card__cta {
+	font-size: 11px;
+}
+.pal-noc-past__grid .pal-champ-card__badge {
+	padding: 3px 8px;
+	font-size: 9px;
+	top: 6px;
+	left: 6px;
+}
+.pal-noc-past__grid .pal-champ-card__play {
+	width: 28px;
+	height: 28px;
+	font-size: 10px;
+	bottom: 6px;
+	right: 6px;
+}
+
+.pal-noc-past__footer {
+	margin-top: 36px;
+}
+
+.pal-noc-past__archive-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 14px 28px;
+	background: transparent;
+	color: #fff;
+	border: 2px solid rgba(255,255,255,0.4);
+	border-radius: 8px;
+	font-family: Montserrat, sans-serif;
+	font-weight: 700;
+	font-size: 0.92rem;
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+
+.pal-noc-past__archive-btn:hover {
+	background: rgba(255,255,255,0.1);
+	border-color: #fff;
+	color: #fff;
+}
+
+.pal-noc-past__archive-btn .fa-arrow-right {
+	font-size: 12px;
+	transition: transform 0.2s ease;
+}
+
+.pal-noc-past__archive-btn:hover .fa-arrow-right {
+	transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Night of Champions — Gala Highlights / Gallery Section
+   ========================================================================== */
+
+.pal-noc-gallery {
+	background: var(--pal-champ-light);
+	padding: 70px 0 80px;
+}
+
+.pal-noc-gallery__inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 40px;
+	display: grid;
+	grid-template-columns: 1fr 1.6fr;
+	gap: 48px;
+	align-items: start;
+}
+
+.pal-noc-gallery__text {
+	padding: 20px 0;
+}
+
+.pal-noc-gallery__eyebrow {
+	display: inline-block;
+	color: var(--pal-champ-gold-dark);
+	font-family: Montserrat, sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	font-size: 0.75rem;
+	margin-bottom: 12px;
+}
+
+.pal-noc-gallery__title {
+	font-family: Montserrat, sans-serif;
+	font-weight: 800;
+	font-size: clamp(1.5rem, 2.5vw, 2rem);
+	color: var(--pal-champ-blue);
+	margin: 0 0 16px;
+	line-height: 1.15;
+	text-transform: uppercase;
+}
+
+.pal-noc-gallery__desc {
+	color: var(--pal-champ-gray);
+	font-size: 0.98rem;
+	line-height: 1.65;
+	margin: 0 0 24px;
+	max-width: 400px;
+}
+
+button.pal-noc-gallery__btn,
+.pal-noc-gallery button.pal-noc-gallery__btn,
+.pal-noc-gallery__btn {
+	display: inline-flex !important;
+	align-items: center !important;
+	gap: 8px !important;
+	padding: 10px 18px !important;
+	background: #F4A51C !important;
+	color: #071F3F !important;
+	border: none !important;
+	border-radius: 8px !important;
+	font-weight: 700 !important;
+	font-size: 13px !important;
+	letter-spacing: 0.02em !important;
+	text-decoration: none !important;
+	text-transform: uppercase !important;
+	cursor: pointer !important;
+	transition: background .15s, color .15s, box-shadow .15s !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+button.pal-noc-gallery__btn:hover,
+.pal-noc-gallery button.pal-noc-gallery__btn:hover,
+.pal-noc-gallery__btn:hover {
+	background: #d68f0e !important;
+	color: #fff !important;
+	box-shadow: none !important;
+}
+
+.pal-noc-gallery__photo {
+	cursor: pointer;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pal-noc-gallery__photo:hover {
+	transform: scale(1.03);
+	box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.pal-noc-gallery__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+}
+
+.pal-noc-gallery__photo {
+	aspect-ratio: 4/3;
+	border-radius: 10px;
+	background: var(--pal-champ-border) center/cover no-repeat;
+	overflow: hidden;
+}
+
+@media (max-width: 900px) {
+	.pal-noc-gallery__inner {
+		grid-template-columns: 1fr;
+		gap: 30px;
+		padding: 0 20px;
+	}
+}
+
+@media (max-width: 560px) {
+	.pal-noc-gallery__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* ==========================================================================
+   Night of Champions — Donation Banner (inline bar: icon + text + button)
+   ========================================================================== */
+
+.pal-noc-donate-banner {
+	background: var(--pal-navy, #071F3F);
+	border-radius: var(--pal-radius-lg, 12px);
+	padding: 22px 32px;
+	max-width: 1200px;
+	margin: 0 auto 0;
+}
+/* Tighten the Elementor section wrapping the donate banner + about section */
+.elementor-widget-pal_noc_donate_banner { margin-bottom: 0 !important; }
+.elementor-widget-pal_noc_about { margin-top: 0 !important; }
+
+.pal-noc-donate-banner__inner {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.pal-noc-donate-banner__icon {
+	flex-shrink: 0;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background: rgba(255,255,255,0.12);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--pal-yellow, #F4A51C);
+	font-size: 20px;
+}
+
+.pal-noc-donate-banner__icon svg {
+	width: 22px;
+	height: 22px;
+	fill: currentColor;
+}
+
+.pal-noc-donate-banner__text {
+	flex: 1;
+	min-width: 0;
+}
+
+.pal-noc-donate-banner__heading {
+	display: block;
+	color: #fff;
+	font-family: Montserrat, sans-serif;
+	font-weight: 700;
+	font-size: 1.05rem;
+	line-height: 1.3;
+	margin-bottom: 2px;
+}
+
+.pal-noc-donate-banner__desc {
+	display: block;
+	color: var(--pal-gray-300, #C4CCD8);
+	font-size: 0.88rem;
+	line-height: 1.5;
+}
+
+.pal-noc-donate-banner__btn {
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: var(--pal-yellow, #F4A51C);
+	color: var(--pal-navy, #071F3F);
+	font-family: Montserrat, sans-serif;
+	font-weight: 700;
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	padding: 12px 28px;
+	border-radius: 30px;
+	text-decoration: none;
+	transition: all 0.2s ease;
+	white-space: nowrap;
+}
+
+.pal-noc-donate-banner__btn:hover {
+	background: var(--pal-yellow-dark, #d68f0e);
+	color: var(--pal-navy, #071F3F);
+	transform: translateY(-1px);
+	text-decoration: none;
+}
+
+@media (max-width: 768px) {
+	.pal-noc-donate-banner { padding: 20px 22px; }
+	.pal-noc-donate-banner__inner {
+		flex-wrap: wrap;
+	}
+	.pal-noc-donate-banner__text {
+		flex: 1 1 calc(100% - 68px);
+	}
+	.pal-noc-donate-banner__btn {
+		width: 100%;
+		justify-content: center;
+		margin-top: 4px;
+	}
+}
+
+/* ==========================================================================
+   Night of Champions — CTA Banner (Centered with BG image)
+   ========================================================================== */
+
+.pal-noc-cta {
+	position: relative;
+	background: var(--pal-champ-blue) center/cover no-repeat;
+	padding: 72px 40px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.pal-noc-cta__inner {
+	position: relative;
+	z-index: 2;
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+.pal-noc-cta__title {
+	font-family: Montserrat, sans-serif;
+	font-weight: 800;
+	font-size: clamp(1.6rem, 3vw, 2.4rem);
+	color: #fff;
+	margin: 0 0 14px;
+	text-transform: uppercase;
+}
+
+.pal-noc-cta__tagline {
+	color: #C4CCD8;
+	font-size: 1.02rem;
+	line-height: 1.6;
+	margin: 0 0 32px;
+	max-width: 540px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.pal-noc-cta__buttons {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 12px;
+}
+
+.pal-noc-cta__btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 14px 32px;
+	font-family: Montserrat, sans-serif;
+	font-weight: 700;
+	font-size: 0.92rem;
+	border-radius: 8px;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	transition: all 0.2s ease;
+}
+
+.pal-noc-cta__btn--primary {
+	background: var(--pal-champ-gold);
+	color: var(--pal-champ-blue);
+	box-shadow: 0 4px 14px rgba(242,177,52,0.35);
+}
+
+.pal-noc-cta__btn--primary:hover {
+	background: #e5a42e;
+	transform: translateY(-1px);
+}
+
+.pal-noc-cta__btn--outline {
+	background: transparent;
+	color: #fff;
+	border: 2px solid rgba(255,255,255,0.5);
+}
+
+.pal-noc-cta__btn--outline:hover {
+	background: rgba(255,255,255,0.1);
+	border-color: #fff;
+}
+
+@media (max-width: 480px) {
+	.pal-noc-cta {
+		padding: 56px 20px;
+	}
+	.pal-noc-cta__buttons {
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+/* ==========================================================================
+   Gallery Lightbox
+   ========================================================================== */
+
+.pal-noc-lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 100000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.pal-noc-lightbox.is-open {
+	opacity: 1;
+	visibility: visible;
+}
+
+.pal-noc-lightbox__overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.92);
+}
+
+.pal-noc-lightbox__wrap {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	max-width: 900px;
+	max-height: 90vh;
+	padding: 20px;
+}
+
+.pal-noc-lightbox__close {
+	position: absolute !important;
+	top: -10px !important;
+	right: 10px !important;
+	z-index: 3 !important;
+	background: none !important;
+	border: none !important;
+	color: #F4A51C !important;
+	font-size: 44px !important;
+	line-height: 1 !important;
+	cursor: pointer !important;
+	opacity: 0.85 !important;
+	transition: opacity 0.2s, color 0.2s !important;
+	outline: none !important;
+}
+
+.pal-noc-lightbox__close:hover {
+	opacity: 1 !important;
+	color: #fff !important;
+}
+
+.pal-noc-lightbox__stage {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+	min-height: 0;
+	width: 100%;
+}
+
+.pal-noc-lightbox__img {
+	max-width: 100%;
+	max-height: 65vh;
+	object-fit: contain;
+	border-radius: 8px;
+	box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+	transition: opacity 0.25s ease;
+}
+
+.pal-noc-lightbox__nav {
+	position: absolute !important;
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+	z-index: 3 !important;
+	background: #071F3F !important;
+	border: 2px solid #F4A51C !important;
+	color: #F4A51C !important;
+	font-size: 28px !important;
+	width: 48px !important;
+	height: 48px !important;
+	border-radius: 50% !important;
+	cursor: pointer !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	transition: background 0.2s, color 0.2s !important;
+	outline: none !important;
+}
+
+.pal-noc-lightbox__nav:hover {
+	background: #F4A51C !important;
+	color: #071F3F !important;
+}
+
+.pal-noc-lightbox__prev { left: 10px; }
+.pal-noc-lightbox__next { right: 10px; }
+
+.pal-noc-lightbox__counter {
+	color: rgba(255,255,255,0.6);
+	font-family: Montserrat, sans-serif;
+	font-size: 13px;
+	font-weight: 600;
+	margin: 14px 0 12px;
+}
+
+.pal-noc-lightbox__thumbs {
+	display: flex;
+	gap: 8px;
+	overflow-x: auto;
+	max-width: 100%;
+	padding: 4px 0;
+	-webkit-overflow-scrolling: touch;
+}
+
+.pal-noc-lightbox__thumb {
+	width: 56px;
+	height: 42px;
+	flex-shrink: 0;
+	border-radius: 6px;
+	background: #333 center/cover no-repeat;
+	cursor: pointer;
+	border: 2px solid transparent;
+	opacity: 0.5;
+	transition: opacity 0.2s, border-color 0.2s;
+}
+
+.pal-noc-lightbox__thumb:hover {
+	opacity: 0.8;
+}
+
+.pal-noc-lightbox__thumb.is-active {
+	opacity: 1;
+	border-color: #F4A51C;
+}
+
+@media (max-width: 600px) {
+	.pal-noc-lightbox__nav {
+		width: 36px !important;
+		height: 36px !important;
+		font-size: 22px !important;
+	}
+	.pal-noc-lightbox__prev { left: 4px; }
+	.pal-noc-lightbox__next { right: 4px; }
+	.pal-noc-lightbox__thumb {
+		width: 44px;
+		height: 33px;
+	}
+}

@@ -1,0 +1,168 @@
+/* ============================================================================
+   Get Involved hub + Volunteer / Mentor / Coach / Partner / Donate
+   Loaded when body has .pal-page--get-involved
+   ========================================================================= */
+
+/* ----- Hub grid (Get Involved landing page) ----------------------------- */
+.pal-page--get-involved .pal-involve-hub {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: var(--pal-space-md);
+	padding: var(--pal-space-lg) 0;
+	max-width: var(--pal-content-max);
+	margin: 0 auto;
+}
+
+.pal-involve-card {
+	display: flex;
+	flex-direction: column;
+	background: var(--pal-white);
+	border-radius: var(--pal-radius-lg);
+	box-shadow: var(--pal-shadow-sm);
+	overflow: hidden;
+	text-align: center;
+	padding: var(--pal-space-lg) var(--pal-space-sm);
+	transition: transform .22s ease, box-shadow .22s ease;
+}
+.pal-involve-card:hover { transform: translateY(-4px); box-shadow: var(--pal-shadow-lg); }
+.pal-involve-card__icon {
+	width: 80px;
+	height: 80px;
+	margin: 0 auto var(--pal-space-sm);
+	background: var(--pal-yellow);
+	color: var(--pal-navy);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 2rem;
+}
+.pal-involve-card__title { margin: 0 0 var(--pal-space-2xs); }
+.pal-involve-card__blurb {
+	color: var(--pal-gray-700);
+	font-size: 0.95rem;
+	line-height: 1.6;
+	flex: 1;
+}
+.pal-involve-card__cta { margin-top: var(--pal-space-sm); }
+
+/* ----- Application steps (used on Volunteer, Mentor, Coach pages) -------- */
+.pal-steps {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: var(--pal-space-md);
+	counter-reset: pal-step;
+	padding: var(--pal-space-md) 0;
+}
+.pal-step {
+	position: relative;
+	padding: var(--pal-space-md) var(--pal-space-sm) var(--pal-space-sm);
+	background: var(--pal-white);
+	border: 1px solid var(--pal-gray-200);
+	border-radius: var(--pal-radius-md);
+	counter-increment: pal-step;
+}
+.pal-step::before {
+	content: counter(pal-step);
+	position: absolute;
+	top: -20px;
+	left: var(--pal-space-sm);
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: var(--pal-navy);
+	color: var(--pal-yellow);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: var(--pal-font-heading);
+	font-weight: 800;
+	font-size: 1.1rem;
+	box-shadow: var(--pal-shadow-sm);
+}
+.pal-step h3 { margin: 0 0 var(--pal-space-3xs); font-size: 1.1rem; }
+.pal-step p { margin: 0; font-size: 0.95rem; color: var(--pal-gray-700); }
+
+/* ----- Donate page: tier table ------------------------------------------ */
+.pal-page--get-involved .pal-donate-tiers {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: var(--pal-space-sm);
+	margin: var(--pal-space-lg) 0;
+}
+.pal-donate-tier {
+	background: var(--pal-white);
+	border: 2px solid var(--pal-gray-200);
+	border-radius: var(--pal-radius-md);
+	padding: var(--pal-space-md) var(--pal-space-sm);
+	text-align: center;
+	transition: border-color .2s ease, transform .2s ease;
+}
+.pal-donate-tier:hover {
+	border-color: var(--pal-yellow);
+	transform: translateY(-3px);
+}
+.pal-donate-tier--featured {
+	border-color: var(--pal-yellow);
+	background: linear-gradient(180deg, var(--pal-yellow-soft) 0%, var(--pal-white) 100%);
+}
+.pal-donate-tier__amount {
+	font-family: var(--pal-font-heading);
+	font-size: 1.8rem;
+	font-weight: 800;
+	color: var(--pal-navy);
+}
+.pal-donate-tier__name {
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-size: 0.85rem;
+	color: var(--pal-yellow-dark);
+	margin: var(--pal-space-3xs) 0;
+}
+.pal-donate-tier__perks {
+	font-size: 0.9rem;
+	color: var(--pal-gray-700);
+	list-style: none;
+	padding: 0;
+	margin: var(--pal-space-2xs) 0 0;
+}
+.pal-donate-tier__perks li { padding: 4px 0; }
+
+/* ----- "Partner with us" — Sponsorship tier rows (used on Partner page) -- */
+.pal-sponsor-tiers {
+	display: grid;
+	gap: var(--pal-space-sm);
+	margin: var(--pal-space-md) 0;
+}
+.pal-sponsor-tier {
+	display: grid;
+	grid-template-columns: 140px 1fr auto;
+	align-items: center;
+	gap: var(--pal-space-md);
+	background: var(--pal-white);
+	border: 1px solid var(--pal-gray-200);
+	border-radius: var(--pal-radius-md);
+	padding: var(--pal-space-sm);
+}
+.pal-sponsor-tier__amount {
+	font-family: var(--pal-font-heading);
+	font-size: 1.4rem;
+	font-weight: 800;
+	color: var(--pal-yellow-dark);
+}
+.pal-sponsor-tier__name {
+	font-family: var(--pal-font-heading);
+	font-weight: 700;
+	color: var(--pal-navy);
+}
+.pal-sponsor-tier__perks {
+	font-size: 0.9rem;
+	color: var(--pal-gray-700);
+}
+
+@media (max-width: 640px) {
+	.pal-sponsor-tier {
+		grid-template-columns: 1fr;
+		text-align: center;
+	}
+}

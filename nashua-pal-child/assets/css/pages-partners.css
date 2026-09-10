@@ -1,0 +1,95 @@
+/* ============================================================================
+   Community Partner acknowledgements page + single pal_partner pages
+   Loaded when body has .pal-page--partners
+   ========================================================================= */
+
+.pal-page--partners .pal-partners-section {
+	padding: var(--pal-space-lg) 0;
+	max-width: var(--pal-content-wide);
+	margin: 0 auto;
+}
+
+/* ----- Tier label (Diamond / Platinum / Gold / Silver / Bronze) --------- */
+.pal-partners-tier {
+	text-align: center;
+	margin: 0 0 var(--pal-space-lg);
+}
+.pal-partners-tier__label {
+	display: inline-block;
+	padding: 8px 22px;
+	background: var(--pal-navy);
+	color: var(--pal-yellow);
+	font-family: var(--pal-font-heading);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	font-size: 0.8rem;
+	border-radius: 999px;
+	margin: 0 0 var(--pal-space-md);
+}
+
+/* Bigger logos for higher tiers; smaller for the long-tail acknowledgements. */
+.pal-partners-grid {
+	display: grid;
+	gap: var(--pal-space-md);
+	align-items: center;
+	justify-items: center;
+	max-width: var(--pal-content-max);
+	margin: 0 auto;
+	padding: 0 var(--pal-space-sm);
+}
+.pal-partners-grid--diamond  { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.pal-partners-grid--platinum { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.pal-partners-grid--gold     { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.pal-partners-grid--silver   { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.pal-partners-grid--bronze   { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+
+.pal-partner-logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--pal-space-sm);
+	background: var(--pal-white);
+	border-radius: var(--pal-radius-md);
+	box-shadow: var(--pal-shadow-sm);
+	transition: transform .18s ease, box-shadow .18s ease;
+	width: 100%;
+	min-height: 120px;
+}
+.pal-partner-logo:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--pal-shadow-md);
+}
+.pal-partner-logo img {
+	max-width: 100%;
+	max-height: 80px;
+	width: auto;
+	height: auto;
+}
+
+/* Inline acknowledgement paragraph — e.g. "Special thanks to …" */
+.pal-partners-thanks {
+	font-style: italic;
+	color: var(--pal-gray-700);
+	text-align: center;
+	max-width: 720px;
+	margin: var(--pal-space-md) auto;
+	line-height: 1.7;
+}
+
+/* Become a Partner CTA at bottom of page */
+.pal-partners-cta {
+	background: var(--pal-navy);
+	color: var(--pal-white);
+	padding: var(--pal-space-xl) var(--pal-space-sm);
+	text-align: center;
+	border-radius: var(--pal-radius-lg);
+	margin: var(--pal-space-lg) auto;
+	max-width: var(--pal-content-max);
+}
+.pal-partners-cta h2 { color: var(--pal-white); margin: 0 0 var(--pal-space-2xs); }
+.pal-partners-cta p {
+	max-width: 600px;
+	margin: 0 auto var(--pal-space-sm);
+	opacity: 0.92;
+}

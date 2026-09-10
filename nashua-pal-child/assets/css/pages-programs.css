@@ -1,0 +1,228 @@
+/* ============================================================================
+   Programs hub + 14 individual program pages
+   Loaded when body has .pal-page--programs
+   ========================================================================= */
+
+.pal-page--programs .pal-programs-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: var(--pal-space-md);
+	padding: var(--pal-space-lg) 0;
+	max-width: var(--pal-content-max);
+	margin: 0 auto;
+}
+
+/* ----- Program card (hub) ------------------------------------------------ */
+.pal-program-card {
+	position: relative;
+	background: var(--pal-white);
+	border-radius: var(--pal-radius-md);
+	box-shadow: var(--pal-shadow-sm);
+	overflow: hidden;
+	transition: transform .22s ease, box-shadow .22s ease;
+	display: flex;
+	flex-direction: column;
+}
+.pal-program-card:hover { transform: translateY(-4px); box-shadow: var(--pal-shadow-lg); }
+
+.pal-program-card__media {
+	aspect-ratio: 4 / 3;
+	background: var(--pal-navy) center 25% / 140% no-repeat;
+	position: relative;
+}
+.pal-program-card__media::after {
+	content: "";
+	position: absolute;
+	inset: auto 0 0 0;
+	height: 60%;
+	background: linear-gradient(180deg, transparent 0%, rgba(7, 31, 63, 0.85) 100%);
+}
+
+.pal-program-card__body {
+	padding: var(--pal-space-sm);
+	position: relative;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+.pal-program-card__category {
+	position: absolute;
+	top: -16px;
+	left: var(--pal-space-sm);
+	background: var(--pal-yellow);
+	color: var(--pal-navy);
+	font-family: var(--pal-font-heading);
+	font-weight: 800;
+	font-size: 0.75rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	padding: 6px 12px;
+	border-radius: 999px;
+}
+.pal-program-card__title {
+	font-size: 1.25rem;
+	margin: 0 0 var(--pal-space-3xs);
+}
+.pal-program-card__blurb {
+	font-size: 0.95rem;
+	color: var(--pal-gray-700);
+	line-height: 1.6;
+	flex: 1;
+}
+
+/* ----- Single program page ---------------------------------------------- */
+.single-pal_program .pal-program-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--pal-space-md);
+	margin: var(--pal-space-md) 0;
+	padding: var(--pal-space-sm);
+	background: var(--pal-gray-100);
+	border-left: 4px solid var(--pal-yellow);
+	border-radius: var(--pal-radius-sm);
+}
+.single-pal_program .pal-program-meta__item h4 {
+	margin: 0 0 var(--pal-space-3xs);
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--pal-gray-400);
+}
+.single-pal_program .pal-program-meta__item p { margin: 0; font-weight: 700; color: var(--pal-navy); }
+
+/* ----- YouTube video embed (single program) -------------------------------- */
+.pal-program-single__media--video,
+.pal-program-featured-img--video {
+	background: none;
+}
+.pal-program-single__video-wrap,
+.pal-program-featured-img__video-wrap {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	height: 0;
+	overflow: hidden;
+	border-radius: var(--pal-radius-md, 8px);
+}
+.pal-program-single__video-wrap iframe,
+.pal-program-featured-img__video-wrap iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	border-radius: var(--pal-radius-md, 8px);
+}
+
+/* When a YouTube video is present, widen the image column so the embed
+   isn't cramped in the default 40% column. Rebalance to 50 / 50. */
+.has-pal-video > .elementor-container > .elementor-column:first-child,
+.has-pal-video > .elementor-container > .elementor-row > .elementor-column:first-child,
+.has-pal-video.elementor-section > .elementor-container > .elementor-column:first-child {
+	width: 50% !important;
+	flex: 0 0 50% !important;
+	max-width: 50% !important;
+}
+.has-pal-video > .elementor-container > .elementor-column:last-child,
+.has-pal-video > .elementor-container > .elementor-row > .elementor-column:last-child,
+.has-pal-video.elementor-section > .elementor-container > .elementor-column:last-child {
+	width: 50% !important;
+	flex: 0 0 50% !important;
+	max-width: 50% !important;
+}
+@media (max-width: 767px) {
+	.has-pal-video > .elementor-container > .elementor-column,
+	.has-pal-video > .elementor-container > .elementor-row > .elementor-column {
+		width: 100% !important;
+		flex: 0 0 100% !important;
+		max-width: 100% !important;
+	}
+}
+
+/* ----- YouTube video carousel (multi-video rotation) ----------------------- */
+.pal-yt-carousel { position: relative; }
+
+.pal-yt-carousel__label {
+	margin: 6px 0 0;
+	font-size: 0.85rem;
+	color: var(--pal-gray-700, #4a5568);
+	text-align: center;
+}
+
+.pal-yt-carousel__arrow {
+	position: absolute;
+	top: calc(50% - 20px);          /* vertically centred on the iframe area */
+	transform: translateY(-50%);
+	z-index: 2;
+	background: rgba(7, 31, 63, 0.65);
+	color: #fff;
+	border: none;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	font-size: 1.15rem;
+	line-height: 1;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background .2s;
+}
+.pal-yt-carousel__arrow:hover { background: rgba(7, 31, 63, 0.9); }
+.pal-yt-carousel__arrow--prev { left: 8px; }
+.pal-yt-carousel__arrow--next { right: 8px; }
+
+.pal-yt-carousel__dots {
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+	margin-top: 10px;
+}
+.pal-yt-carousel__dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	border: 2px solid var(--pal-navy, #071f3f);
+	background: transparent;
+	padding: 0;
+	cursor: pointer;
+	transition: background .2s;
+}
+.pal-yt-carousel__dot.is-active,
+.pal-yt-carousel__dot:hover {
+	background: var(--pal-navy, #071f3f);
+}
+
+/* Locations table — the program meta box ships a CPT-level repeater */
+.pal-program-locations {
+	width: 100%;
+	border-collapse: collapse;
+	margin: var(--pal-space-md) 0;
+}
+.pal-program-locations th,
+.pal-program-locations td {
+	padding: var(--pal-space-2xs) var(--pal-space-xs);
+	text-align: left;
+	border-bottom: 1px solid var(--pal-gray-200);
+}
+.pal-program-locations th {
+	font-family: var(--pal-font-heading);
+	text-transform: uppercase;
+	font-size: 0.8rem;
+	letter-spacing: 0.1em;
+	color: var(--pal-gray-400);
+}
+
+/* Related programs strip at bottom of single */
+.pal-related-programs {
+	background: var(--pal-gray-100);
+	padding: var(--pal-space-lg) 0;
+}
+.pal-related-programs__title {
+	text-align: center;
+	margin: 0 0 var(--pal-space-md);
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	color: var(--pal-gray-700);
+}

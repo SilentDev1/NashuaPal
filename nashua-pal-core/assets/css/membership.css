@@ -1,0 +1,628 @@
+/* ==========================================================================
+   Membership — Nashua PAL Core
+   ========================================================================== */
+
+/* ==========================================================================
+   Shared Buttons
+   ========================================================================== */
+
+.pal-membership-btn {
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	gap: 8px !important;
+	padding: 14px 28px !important;
+	font-family: Montserrat, sans-serif !important;
+	font-size: 14px !important;
+	font-weight: 700 !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.05em !important;
+	text-decoration: none !important;
+	border-radius: 50px !important;
+	transition: all 0.25s ease !important;
+	cursor: pointer !important;
+	text-align: center !important;
+	border: 2px solid transparent !important;
+	line-height: 1.4 !important;
+}
+
+.pal-membership-btn--gold {
+	background: var(--pal-champ-gold, #F2B134) !important;
+	color: var(--pal-champ-blue, #11284D) !important;
+	border-color: var(--pal-champ-gold, #F2B134) !important;
+}
+
+.pal-membership-btn--gold:hover {
+	background: var(--pal-champ-gold-dark, #d99c1e) !important;
+	border-color: var(--pal-champ-gold-dark, #d99c1e) !important;
+	color: var(--pal-champ-blue, #11284D) !important;
+}
+
+/* ==========================================================================
+   1. Header
+   ========================================================================== */
+
+.pal-membership-header {
+	background: var(--pal-champ-blue, #11284D) !important;
+	padding: 50px 20px 40px !important;
+	text-align: center !important;
+}
+
+.pal-membership-header__inner {
+	max-width: 800px !important;
+	margin: 0 auto !important;
+}
+
+.pal-membership-header__title {
+	font-family: 'Playfair Display', Georgia, serif !important;
+	font-size: 42px !important;
+	font-weight: 700 !important;
+	color: var(--pal-champ-gold, #F2B134) !important;
+	margin: 0 0 18px !important;
+	line-height: 1.15 !important;
+	text-align: center !important;
+}
+
+.pal-membership-header__divider {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	gap: 12px !important;
+	margin-bottom: 22px !important;
+}
+
+.pal-membership-header__line {
+	display: block !important;
+	width: 80px !important;
+	height: 2px !important;
+	background: var(--pal-champ-gold, #F2B134) !important;
+}
+
+.pal-membership-header__divider i {
+	color: var(--pal-champ-gold, #F2B134) !important;
+	font-size: 14px !important;
+}
+
+.pal-membership-header__subtitle {
+	font-family: Montserrat, sans-serif !important;
+	font-size: 16px !important;
+	font-weight: 700 !important;
+	color: #fff !important;
+	margin: 0 0 10px !important;
+	line-height: 1.6 !important;
+	text-align: center !important;
+}
+
+.pal-membership-header__desc {
+	font-family: Montserrat, sans-serif !important;
+	font-size: 15px !important;
+	color: rgba(255,255,255,0.8) !important;
+	margin: 0 !important;
+	line-height: 1.6 !important;
+	text-align: center !important;
+}
+
+/* ==========================================================================
+   2. Program Sign-Up Cards
+   ========================================================================== */
+
+.pal-membership-programs {
+	background: #fff !important;
+	padding: 10px 20px 50px !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.pal-membership-programs__grid {
+	max-width: 1100px !important;
+	margin: 0 auto !important;
+	display: grid !important;
+	grid-template-columns: repeat(2, 1fr) !important;
+	gap: 28px !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.pal-membership-program-card {
+	border-radius: 16px !important;
+	overflow: hidden !important;
+	box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
+	display: flex !important;
+	flex-direction: column !important;
+}
+
+.pal-membership-program-card__header {
+	background: linear-gradient(135deg, #11284D 0%, #1a3a6a 100%) !important;
+	padding: 28px 24px !important;
+	text-align: center !important;
+	color: #fff !important;
+}
+
+.pal-membership-program-card__header > i {
+	font-size: 36px !important;
+	color: var(--pal-champ-gold, #F2B134) !important;
+	margin-bottom: 10px !important;
+	display: block !important;
+}
+
+.pal-membership-program-card__title {
+	font-family: Montserrat, sans-serif !important;
+	font-size: 18px !important;
+	font-weight: 800 !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.08em !important;
+	color: #fff !important;
+	margin: 0 0 6px !important;
+}
+
+.pal-membership-program-card__sub {
+	font-family: Montserrat, sans-serif !important;
+	font-size: 13px !important;
+	color: rgba(255,255,255,0.7) !important;
+	font-weight: 500 !important;
+}
+
+.pal-membership-program-card__body {
+	background: #fff !important;
+	padding: 24px 28px 28px !important;
+	flex: 1 !important;
+	display: flex !important;
+	flex-direction: column !important;
+}
+
+.pal-membership-program-card__list {
+	list-style: none !important;
+	padding: 0 !important;
+	margin: 0 0 24px !important;
+	flex: 1 !important;
+}
+
+.pal-membership-program-card__list li {
+	font-family: Montserrat, sans-serif !important;
+	font-size: 14px !important;
+	color: #333 !important;
+	padding: 9px 0 !important;
+	border-bottom: 1px solid #f0f0f0 !important;
+	display: flex !important;
+	align-items: center !important;
+	gap: 10px !important;
+	list-style: none !important;
+}
+
+.pal-membership-program-card__list li:last-child {
+	border-bottom: 0 !important;
+}
+
+.pal-membership-program-card__list li > i {
+	color: #22c55e !important;
+	font-size: 14px !important;
+	flex-shrink: 0 !important;
+}
+
+.pal-membership-program-card__body .pal-membership-btn {
+	width: 100% !important;
+	margin-top: auto !important;
+}
+
+/* ==========================================================================
+   3. Values Strip
+   ========================================================================== */
+
+.pal-membership-values {
+	background: var(--pal-champ-blue, #11284D) !important;
+	padding: 40px 20px !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.pal-membership-values__inner {
+	max-width: 1100px !important;
+	margin: 0 auto !important;
+	display: grid !important;
+	grid-template-columns: repeat(4, 1fr) !important;
+	gap: 24px !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.pal-membership-value {
+	text-align: center !important;
+}
+
+.pal-membership-value__icon {
+	width: 50px !important;
+	height: 50px !important;
+	border-radius: 50% !important;
+	background: rgba(255,255,255,0.1) !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	margin: 0 auto 12px !important;
+}
+
+.pal-membership-value__icon i {
+	font-size: 22px !important;
+	color: var(--pal-champ-gold, #F2B134) !important;
+}
+
+.pal-membership-value__title {
+	font-family: Montserrat, sans-serif !important;
+	font-size: 15px !important;
+	font-weight: 700 !important;
+	color: #fff !important;
+	margin: 0 0 6px !important;
+}
+
+.pal-membership-value__desc {
+	font-family: Montserrat, sans-serif !important;
+	font-size: 13px !important;
+	color: rgba(255,255,255,0.7) !important;
+	line-height: 1.5 !important;
+	margin: 0 !important;
+}
+
+/* ==========================================================================
+   4. Story Section
+   ========================================================================== */
+
+.pal-membership-story {
+	background: #fff !important;
+	padding: 60px 20px !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.pal-membership-story__inner {
+	max-width: 1100px !important;
+	margin: 0 auto !important;
+	display: flex !important;
+	align-items: center !important;
+	gap: 50px !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.pal-membership-story__photo {
+	flex: 0 0 42% !important;
+	max-width: 42% !important;
+}
+
+.pal-membership-story__photo img {
+	width: 100% !important;
+	height: auto !important;
+	border-radius: 16px !important;
+	display: block !important;
+	object-fit: cover !important;
+}
+
+.pal-membership-story__text {
+	flex: 1 !important;
+	min-width: 0 !important;
+}
+
+.pal-membership-story__script {
+	display: block !important;
+	font-family: 'Dancing Script', 'Great Vibes', cursive !important;
+	font-size: 32px !important;
+	color: var(--pal-champ-gold, #F2B134) !important;
+	margin-bottom: 4px !important;
+	font-weight: 400 !important;
+}
+
+.pal-membership-story__title {
+	font-family: 'Playfair Display', Georgia, serif !important;
+	font-size: 36px !important;
+	font-weight: 700 !important;
+	color: var(--pal-champ-blue, #11284D) !important;
+	margin: 0 0 18px !important;
+	line-height: 1.2 !important;
+}
+
+.pal-membership-story__desc {
+	font-family: Montserrat, sans-serif !important;
+	font-size: 15px !important;
+	color: #5a6577 !important;
+	line-height: 1.7 !important;
+	margin: 0 0 16px !important;
+}
+
+.pal-membership-story__closing {
+	font-family: Montserrat, sans-serif !important;
+	font-size: 15px !important;
+	font-weight: 700 !important;
+	color: var(--pal-champ-blue, #11284D) !important;
+	margin: 0 !important;
+}
+
+/* ==========================================================================
+   5. Notice Banner
+   ========================================================================== */
+
+.pal-membership-notice {
+	background: #fff !important;
+	padding: 0 20px 40px !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.pal-membership-notice__inner {
+	max-width: 1100px !important;
+	margin: 0 auto !important;
+	background: #FFF8E1 !important;
+	border: 1px solid #F2B134 !important;
+	border-radius: 14px !important;
+	padding: 24px 28px !important;
+	display: flex !important;
+	align-items: flex-start !important;
+	gap: 18px !important;
+	position: relative !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.pal-membership-notice__icon {
+	flex-shrink: 0 !important;
+	width: 40px !important;
+	height: 40px !important;
+	border-radius: 50% !important;
+	background: var(--pal-champ-gold, #F2B134) !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+.pal-membership-notice__icon i {
+	font-size: 18px !important;
+	color: var(--pal-champ-blue, #11284D) !important;
+}
+
+.pal-membership-notice__cols {
+	flex: 1 !important;
+	display: grid !important;
+	grid-template-columns: 1fr 1fr !important;
+	gap: 20px !important;
+}
+
+.pal-membership-notice__col {
+	font-family: Montserrat, sans-serif !important;
+	font-size: 13px !important;
+	color: #333 !important;
+	line-height: 1.6 !important;
+}
+
+.pal-membership-notice__close {
+	position: absolute !important;
+	top: 12px !important;
+	right: 14px !important;
+	background: none !important;
+	border: none !important;
+	cursor: pointer !important;
+	color: #999 !important;
+	font-size: 16px !important;
+	padding: 4px !important;
+	line-height: 1 !important;
+}
+
+.pal-membership-notice__close:hover {
+	color: #333 !important;
+}
+
+/* ==========================================================================
+   6. Info Cards (schedule, etc.)
+   ========================================================================== */
+
+.pal-membership-info-cards {
+	background: #fff !important;
+	padding: 0 20px 40px !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.pal-membership-info-cards__grid {
+	max-width: 1100px !important;
+	margin: 0 auto !important;
+	display: grid !important;
+	grid-template-columns: repeat(2, 1fr) !important;
+	gap: 28px !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.pal-membership-info-card {
+	background: #f8f9fb !important;
+	border-radius: 14px !important;
+	padding: 28px 24px !important;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.04) !important;
+}
+
+.pal-membership-info-card__top {
+	display: flex !important;
+	align-items: center !important;
+	gap: 14px !important;
+	margin-bottom: 14px !important;
+}
+
+.pal-membership-info-card__icon {
+	width: 44px !important;
+	height: 44px !important;
+	border-radius: 50% !important;
+	background: var(--pal-champ-blue, #11284D) !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	flex-shrink: 0 !important;
+}
+
+.pal-membership-info-card__icon i {
+	font-size: 18px !important;
+	color: var(--pal-champ-gold, #F2B134) !important;
+}
+
+.pal-membership-info-card__title {
+	font-family: Montserrat, sans-serif !important;
+	font-size: 16px !important;
+	font-weight: 700 !important;
+	color: var(--pal-champ-blue, #11284D) !important;
+	margin: 0 !important;
+}
+
+.pal-membership-info-card__text {
+	font-family: Montserrat, sans-serif !important;
+	font-size: 14px !important;
+	color: #5a6577 !important;
+	line-height: 1.6 !important;
+	margin: 0 0 14px !important;
+}
+
+.pal-membership-info-card__highlight {
+	background: #FFF8E1 !important;
+	border: 1px solid rgba(242,177,52,0.3) !important;
+	border-radius: 10px !important;
+	padding: 14px 18px !important;
+	font-family: Montserrat, sans-serif !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	color: var(--pal-champ-blue, #11284D) !important;
+	line-height: 1.6 !important;
+}
+
+/* ==========================================================================
+   7. Application Cards
+   ========================================================================== */
+
+.pal-membership-application {
+	background: #fff !important;
+	padding: 0 20px 50px !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.pal-membership-application__grid {
+	max-width: 1100px !important;
+	margin: 0 auto !important;
+	display: grid !important;
+	grid-template-columns: repeat(2, 1fr) !important;
+	gap: 28px !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.pal-membership-app-card {
+	background: #f8f9fb !important;
+	border-radius: 14px !important;
+	padding: 28px 24px !important;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.04) !important;
+}
+
+.pal-membership-app-card__top {
+	display: flex !important;
+	align-items: center !important;
+	gap: 14px !important;
+	margin-bottom: 14px !important;
+}
+
+.pal-membership-app-card__icon {
+	width: 44px !important;
+	height: 44px !important;
+	border-radius: 50% !important;
+	background: var(--pal-champ-blue, #11284D) !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	flex-shrink: 0 !important;
+}
+
+.pal-membership-app-card__icon i {
+	font-size: 18px !important;
+	color: var(--pal-champ-gold, #F2B134) !important;
+}
+
+.pal-membership-app-card__title {
+	font-family: Montserrat, sans-serif !important;
+	font-size: 16px !important;
+	font-weight: 700 !important;
+	color: var(--pal-champ-blue, #11284D) !important;
+	margin: 0 !important;
+}
+
+.pal-membership-app-card__text {
+	font-family: Montserrat, sans-serif !important;
+	font-size: 14px !important;
+	color: #5a6577 !important;
+	line-height: 1.6 !important;
+	margin: 0 0 16px !important;
+}
+
+.pal-membership-link {
+	display: inline-flex !important;
+	align-items: center !important;
+	gap: 8px !important;
+	font-family: Montserrat, sans-serif !important;
+	font-size: 14px !important;
+	font-weight: 700 !important;
+	color: var(--pal-champ-gold, #F2B134) !important;
+	text-decoration: none !important;
+	transition: color 0.2s ease !important;
+}
+
+.pal-membership-link:hover {
+	color: var(--pal-champ-gold-dark, #d99c1e) !important;
+}
+
+.pal-membership-link i {
+	font-size: 12px !important;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 991px) {
+	.pal-membership-story__inner {
+		flex-direction: column !important;
+		gap: 30px !important;
+	}
+	.pal-membership-story__photo {
+		flex: none !important;
+		max-width: 100% !important;
+	}
+	.pal-membership-values__inner {
+		grid-template-columns: repeat(2, 1fr) !important;
+	}
+}
+
+@media (max-width: 768px) {
+	.pal-membership-programs__grid,
+	.pal-membership-info-cards__grid,
+	.pal-membership-application__grid {
+		grid-template-columns: 1fr !important;
+	}
+	.pal-membership-notice__cols {
+		grid-template-columns: 1fr !important;
+	}
+	.pal-membership-header__title {
+		font-size: 32px !important;
+	}
+	.pal-membership-story__title {
+		font-size: 28px !important;
+	}
+}
+
+@media (max-width: 600px) {
+	.pal-membership-values__inner {
+		grid-template-columns: 1fr !important;
+	}
+	.pal-membership-header {
+		padding: 36px 16px 28px !important;
+	}
+	.pal-membership-programs,
+	.pal-membership-notice,
+	.pal-membership-info-cards,
+	.pal-membership-application {
+		padding-left: 16px !important;
+		padding-right: 16px !important;
+	}
+	.pal-membership-story {
+		padding: 40px 16px !important;
+	}
+}

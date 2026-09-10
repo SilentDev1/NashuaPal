@@ -1,0 +1,636 @@
+/*
+Theme Name:     Nashua PAL Child
+Theme URI:      https://nashuapal.com
+Description:    Child theme for Nashua PAL 2026 — locks in brand colors and typography across every page (Layout, Programs, Get Involved, Events, Partners) and provides shared CSS hooks for the three event template variants (BetterUnite embed, Community Event, Champions Awardees). Companion to the nashua-pal-core plugin + nashua-pal-event-layout-helper.
+Author:         Cao Tech
+Author URI:     https://cao-tech.com
+Template:       hello-elementor
+Version:        1.1.25
+License:        GNU General Public License v2 or later
+License URI:    http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:    nashua-pal-child
+*/
+
+/* ---------------------------------------------------------------------------
+   Brand foundation. The nashua-pal-core plugin also exposes these as
+   --pal-* vars; we mirror them here so the theme works even if the plugin is
+   deactivated, and add layout-level vars on top.
+   --------------------------------------------------------------------------- */
+
+:root {
+  /* Brand colors (from README + project memory) */
+  --pal-navy: #071F3F;
+  --pal-navy-2: #0D2952;
+  --pal-navy-3: #103466;
+  --pal-navy-90: rgba(7, 31, 63, 0.9);
+  --pal-yellow: #F4A51C;
+  --pal-yellow-dark: #D88E0F;
+  --pal-yellow-soft: #FFFBF1;
+  --pal-white: #FFFFFF;
+  --pal-gray-100: #F7F9FC;
+  --pal-gray-200: #E8EDF5;
+  --pal-gray-400: #98A6B7;
+  --pal-gray-700: #3A4658;
+
+  /* Typography */
+  --pal-font-heading: 'Montserrat', system-ui, -apple-system, Segoe UI, sans-serif;
+  --pal-font-body: 'Open Sans', system-ui, -apple-system, Segoe UI, sans-serif;
+
+  /* Spacing scale */
+  --pal-space-3xs: 4px;
+  --pal-space-2xs: 8px;
+  --pal-space-xs: 12px;
+  --pal-space-sm: 20px;
+  --pal-space-md: 32px;
+  --pal-space-lg: 56px;
+  --pal-space-xl: 88px;
+
+  /* Layout */
+  --pal-content-max: 1180px;
+  --pal-content-wide: 1440px;
+  --pal-radius-sm: 6px;
+  --pal-radius-md: 12px;
+  --pal-radius-lg: 24px;
+
+  /* Shadows */
+  --pal-shadow-sm: 0 2px 8px rgba(7, 31, 63, 0.08);
+  --pal-shadow-md: 0 8px 24px rgba(7, 31, 63, 0.10);
+  --pal-shadow-lg: 0 20px 48px rgba(7, 31, 63, 0.16);
+}
+
+/* ---------------------------------------------------------------------------
+   Root typography + base elements
+   --------------------------------------------------------------------------- */
+
+body {
+  font-family: var(--pal-font-body);
+  color: var(--pal-gray-700);
+  background: var(--pal-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--pal-font-heading);
+  color: var(--pal-navy);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+h1 { font-size: clamp(2rem, 4.5vw, 3.25rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+h3 { font-size: clamp(1.25rem, 2.2vw, 1.65rem); }
+h4 { font-size: 1.15rem; }
+
+a {
+  color: var(--pal-navy);
+  text-decoration: none;
+  transition: color .18s ease;
+}
+a:hover { color: var(--pal-yellow-dark); }
+
+img { max-width: 100%; height: auto; }
+
+/* ---------------------------------------------------------------------------
+   Shared utility primitives — usable from Elementor HTML widgets, shortcodes,
+   and theme templates alike.
+   --------------------------------------------------------------------------- */
+
+.pal-container { max-width: var(--pal-content-max); margin: 0 auto; padding: 0 var(--pal-space-sm); }
+.pal-container--wide { max-width: var(--pal-content-wide); }
+
+.pal-section { padding: var(--pal-space-xl) 0; }
+.pal-section--tight { padding: var(--pal-space-lg) 0; }
+.pal-section--navy { background: var(--pal-navy); color: var(--pal-white); }
+.pal-section--gray { background: var(--pal-gray-100); }
+.pal-section--navy h1,
+.pal-section--navy h2,
+.pal-section--navy h3,
+.pal-section--navy h4 { color: var(--pal-white); }
+
+/* Page hero band — shared across Layout, Programs, Get Involved, Partners, Events */
+.pal-page-hero {
+  background: linear-gradient(135deg, var(--pal-navy) 0%, var(--pal-navy-2) 60%, var(--pal-navy-3) 100%);
+  color: var(--pal-white);
+  padding: var(--pal-space-xl) 0 var(--pal-space-lg);
+  position: relative;
+  overflow: hidden;
+}
+.pal-page-hero h1 { color: var(--pal-white); margin: 0 0 var(--pal-space-2xs); }
+.pal-page-hero__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--pal-yellow);
+  margin: 0 0 var(--pal-space-xs);
+}
+.pal-page-hero__lede {
+  max-width: 760px;
+  font-size: 1.1rem;
+  opacity: 0.92;
+  margin: 0;
+}
+
+/* Breadcrumb */
+.pal-breadcrumbs { font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); margin-bottom: var(--pal-space-xs); }
+.pal-breadcrumbs a { color: rgba(255, 255, 255, 0.85); border-bottom: 1px solid transparent; transition: border-color .18s ease, color .18s ease; }
+.pal-breadcrumbs a:hover { color: var(--pal-yellow); border-bottom-color: var(--pal-yellow); }
+.pal-breadcrumbs__sep { margin: 0 8px; color: rgba(255, 255, 255, 0.4); }
+
+/* CTA buttons — match plugin's [pal_donate_button] visual language */
+.pal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--pal-radius-md);
+  font-family: var(--pal-font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  white-space: nowrap;     /* never wrap "DONATE TODAY" onto two lines */
+  border: none;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+/* Compact button when used inside a header / toolbar / promo-bar context —
+   the default .pal-btn padding/size is calibrated for hero + section CTAs,
+   not a 40px-tall navigation bar. */
+.pal-header-main .pal-btn,
+.pal-header-main .pal-donate-btn,
+.pal-toolbar .pal-btn,
+.pal-toolbar .pal-donate-btn,
+.pal-promo .pal-btn,
+.pal-promo .pal-promo-btn,
+.elementor-location-header .pal-btn,
+.elementor-location-header .pal-donate-btn {
+  padding: 10px 18px;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+.pal-btn--primary {
+  background: var(--pal-yellow);
+  color: var(--pal-navy);
+  box-shadow: var(--pal-shadow-md);
+}
+.pal-btn--primary:hover {
+  background: var(--pal-yellow-dark);
+  color: var(--pal-navy);
+  transform: translateY(-2px);
+  box-shadow: var(--pal-shadow-lg);
+}
+.pal-btn--ghost {
+  background: transparent;
+  color: var(--pal-white);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+.pal-btn--ghost:hover {
+  background: var(--pal-white);
+  color: var(--pal-navy);
+}
+
+/* Card primitive */
+.pal-card {
+  background: var(--pal-white);
+  border-radius: var(--pal-radius-md);
+  box-shadow: var(--pal-shadow-sm);
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.pal-card:hover { transform: translateY(-4px); box-shadow: var(--pal-shadow-lg); }
+.pal-card__media { aspect-ratio: 16 / 10; background: var(--pal-gray-200) center / cover no-repeat; }
+.pal-card__body { padding: var(--pal-space-sm); }
+.pal-card__title { margin: 0 0 var(--pal-space-3xs); }
+.pal-card__meta { color: var(--pal-gray-400); font-size: 0.9rem; }
+
+/* Sponsor strip — shared by all 3 event templates and Partners page */
+.pal-sponsors {
+  padding: var(--pal-space-lg) 0;
+  background: var(--pal-gray-100);
+}
+.pal-sponsors__title {
+  text-align: center;
+  margin: 0 0 var(--pal-space-md);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--pal-gray-700);
+}
+.pal-sponsors__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--pal-space-sm);
+  align-items: center;
+  max-width: var(--pal-content-max);
+  margin: 0 auto;
+  padding: 0 var(--pal-space-sm);
+}
+.pal-sponsors__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--pal-space-xs);
+}
+.pal-sponsors__item img {
+  max-width: 100%;
+  max-height: 90px;
+  width: auto;
+  height: auto;
+  filter: grayscale(20%);
+  transition: filter .18s ease, transform .18s ease;
+}
+.pal-sponsors__item img:hover { filter: none; transform: scale(1.04); }
+
+/* ==========================================================================
+   Theme Builder Header (#4417) overrides
+   - Hover/active pointer color → brand yellow (#F4A51C)
+   - Tighter main row so the white nav band doesn't dominate
+   - Logo height constrained without breaking the overflow-onto-hero effect
+   ========================================================================== */
+
+/* Brand-yellow underline on hover / focus / current menu item */
+header.elementor-location-header .elementor-nav-menu .elementor-item:hover::after,
+header.elementor-location-header .elementor-nav-menu .elementor-item:focus::after,
+header.elementor-location-header .elementor-nav-menu .elementor-item.elementor-item-active::after,
+header.elementor-location-header .elementor-nav-menu li:hover > a.elementor-item::after,
+header.elementor-location-header .elementor-nav-menu li.current-menu-item > a.elementor-item::after,
+header.elementor-location-header .elementor-nav-menu li.current-menu-ancestor > a.elementor-item::after {
+  background-color: #F4A51C !important;
+}
+/* Match the link text color on hover so the whole row reads brand */
+header.elementor-location-header .elementor-nav-menu .elementor-item:hover,
+header.elementor-location-header .elementor-nav-menu .elementor-item:focus,
+header.elementor-location-header .elementor-nav-menu li:hover > a.elementor-item,
+header.elementor-location-header .elementor-nav-menu li.current-menu-item > a.elementor-item {
+  color: #F4A51C !important;
+}
+
+/* Slimmer main row — bundled JSON has 10/30/10/30 padding which Elementor
+   then pads further per-widget. Force a tighter band on the white nav row
+   only (id contains "pal_h_main"); leaves toolbar + promo bar untouched. */
+header.elementor-location-header section[data-id*="pal_h_main"] {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+header.elementor-location-header section[data-id*="pal_h_main"] .elementor-widget {
+  margin-bottom: 0 !important;
+}
+header.elementor-location-header section[data-id*="pal_h_main"] .elementor-column {
+  align-self: center;
+}
+
+/* Logo overflow effect stays on desktop: PAL badge can spill past the band.
+   On mobile (<=768px) the logo shrinks to fit inside the header bar. */
+header.elementor-location-header section[data-id*="pal_h_main"] .pal-logo img {
+  max-height: 130px;
+  height: auto;
+  width: auto !important;
+}
+@media (max-width: 768px) {
+  header.elementor-location-header section[data-id*="pal_h_main"] .pal-logo img {
+    max-height: 48px !important;
+    height: 48px !important;
+    width: auto !important;
+    margin-bottom: 0 !important;
+  }
+  header.elementor-location-header section[data-id*="pal_h_main"] .pal-logo {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* Tighter horizontal rhythm between nav items + smaller padding on each */
+header.elementor-location-header .elementor-nav-menu .elementor-item {
+  padding: 12px 16px !important;
+}
+header.elementor-location-header .elementor-nav-menu li + li {
+  margin-left: 2px;
+}
+
+/* ==========================================================================
+   Theme Builder Footer (#4415) overrides
+   - Stretch the inner container so columns fill the band (right gutter fix)
+   - Visible gap between columns so "QUICK LINKS" and "GET INVOLVED"
+     don't run together as one word
+   ========================================================================== */
+footer.elementor-location-footer .elementor-section[data-id*="sec000009"] > .elementor-container,
+footer.elementor-location-footer .elementor-section[data-id*="sec000012"] > .elementor-container {
+  max-width: 100% !important;
+  padding-left: 60px;
+  padding-right: 60px;
+  gap: 32px;
+}
+@media (max-width: 1024px) {
+  footer.elementor-location-footer .elementor-section[data-id*="sec000009"] > .elementor-container,
+  footer.elementor-location-footer .elementor-section[data-id*="sec000012"] > .elementor-container {
+    padding-left: 24px;
+    padding-right: 24px;
+    gap: 24px;
+  }
+}
+
+/* Newsletter input + button — keep within the column on narrower widths */
+footer.elementor-location-footer .pal-newsletter form {
+  flex-wrap: wrap;
+}
+
+/* Legal bar — rendered by [pal_footer_legal]. Copyright + sub-line on the
+   left, utility-link list on the right, hairline border at the top.
+   Class-only selectors (no `footer.elementor-location-footer` ancestor) so
+   the styles also resolve inside Elementor's template-edit preview iframe,
+   where the <footer> wrapper isn't present. */
+.pal-footer-legal {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 36px;
+  padding: 24px 0 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+.pal-footer-legal__text {
+  color: #9BA8BD;
+  font-size: 0.82rem;
+}
+.pal-footer-legal__text a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted #5A6B85;
+  transition: color .15s ease, border-color .15s ease;
+}
+.pal-footer-legal__text a:hover {
+  color: #F4A51C;
+  border-bottom-color: #F4A51C;
+}
+.pal-footer-legal__sub {
+  color: #7A8AA3;
+}
+.pal-footer-legal__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.pal-footer-legal__links a {
+  color: #9BA8BD;
+  text-decoration: none;
+  font-size: 0.82rem;
+  transition: color .15s ease;
+}
+.pal-footer-legal__links a:hover {
+  color: #F4A51C;
+}
+
+/* Logo-column contact links (phone + email) inside the dark footer band —
+   inherit the column's muted gray instead of the default blue link color,
+   which was invisible on navy. Hover to brand yellow for affordance. */
+footer.elementor-location-footer .pal-phone,
+footer.elementor-location-footer .pal-email {
+  color: #9BA8BD;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color .15s ease;
+}
+footer.elementor-location-footer .pal-phone:hover,
+footer.elementor-location-footer .pal-email:hover,
+footer.elementor-location-footer .pal-phone:focus,
+footer.elementor-location-footer .pal-email:focus {
+  color: #F4A51C;
+}
+footer.elementor-location-footer .pal-phone i,
+footer.elementor-location-footer .pal-email i,
+footer.elementor-location-footer .pal-address i {
+  color: #F4A51C;
+}
+
+/* ==========================================================================
+   Equal-height card columns utility
+   ----
+   Add `pal-equal-cards` to the section's Advanced → CSS Classes field.
+   Stretches ONLY the inline-styled card divs inside HTML widgets to match
+   the tallest column. Does NOT touch video widgets (their iframes use
+   absolute positioning inside an aspect-ratio wrapper and break when flexed),
+   nav-menu widgets, or any other native widget — those keep their natural
+   sizing inside an already-equal-height column (Elementor's flex container
+   stretches columns to equal height by default).
+   ========================================================================== */
+.pal-equal-cards .elementor-column {
+  display: flex;
+}
+.pal-equal-cards .elementor-column > .elementor-element-populated,
+.pal-equal-cards .elementor-column > .elementor-widget-wrap {
+  width: 100%;
+}
+/* Only HTML-widget cards stretch — the inline-styled <div> inside them
+   gets 100% min-height so its background fills the column. */
+.pal-equal-cards .elementor-widget-html,
+.pal-equal-cards .elementor-widget-html > .elementor-widget-container {
+  height: 100%;
+}
+.pal-equal-cards .elementor-widget-html > .elementor-widget-container > div:first-child {
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Mobile menu button — nuke every possible Elementor border/outline.
+   Force the hamburger bars to match the theme (white on navy, gold hover).
+   ========================================================================== */
+.elementor-widget-pal_mobile_menu_button,
+.elementor-widget-pal_mobile_menu_button > .elementor-widget-container,
+.elementor-widget-pal_mobile_menu,
+.elementor-widget-pal_mobile_menu > .elementor-widget-container {
+  border: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+/* Reset Elementor/theme chrome on button children — but NOT .pal-mobile-toggle__bar
+   (those need their white background to be visible on the navy header) */
+.elementor-widget-pal_mobile_menu_button button,
+.elementor-widget-pal_mobile_menu_button > .elementor-widget-container button {
+  border: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+/* Kill Elementor placeholder/empty-widget overlays */
+.elementor-widget-pal_mobile_menu_button .elementor-widget-empty-icon,
+.elementor-widget-pal_mobile_menu .elementor-widget-empty-icon,
+.elementor-widget-pal_mobile_menu_button::before,
+.elementor-widget-pal_mobile_menu_button::after {
+  display: none !important;
+}
+/* The toggle button itself — zero borders, transparent bg */
+.pal-mobile-toggle,
+button.pal-mobile-toggle,
+button[data-pal-mobile-menu-open] {
+  border: 0 !important;
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+}
+/* Bars: white by default, brand gold on hover */
+.pal-mobile-toggle__bar {
+  background: #fff !important;
+  border: none !important;
+}
+.pal-mobile-toggle:hover .pal-mobile-toggle__bar,
+.pal-mobile-toggle:focus .pal-mobile-toggle__bar {
+  background: var(--pal-yellow, #F4A51C) !important;
+}
+/* Also kill pink border on HTML widgets in the mobile header.
+   The live site may still use an HTML widget until the template is
+   re-imported, so cover both old and new widget types. */
+.pal-mheader .elementor-widget-html,
+.pal-mheader .elementor-widget-html > .elementor-widget-container,
+.pal-mheader .elementor-widget-shortcode,
+.pal-mheader .elementor-widget-shortcode > .elementor-widget-container,
+.pal-mheader .elementor-widget,
+.pal-mheader .elementor-widget > .elementor-widget-container {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+/* Inner section inside mobile header tools — no margin/padding */
+.pal-mheader .elementor-inner-section {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.pal-mheader .elementor-inner-section .elementor-column {
+  padding: 0 !important;
+}
+.pal-mheader .elementor-inner-section .elementor-widget {
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+   Footer — prevent Elementor Nav Menu widgets from collapsing to hamburger.
+   Force all footer nav menus to display as vertical link lists.
+   ========================================================================== */
+footer .elementor-nav-menu--dropdown,
+footer .elementor-menu-toggle,
+.elementor-location-footer .elementor-nav-menu--dropdown,
+.elementor-location-footer .elementor-menu-toggle,
+footer .elementor-nav-menu__toggle,
+.elementor-location-footer .elementor-nav-menu__toggle {
+  display: none !important;
+}
+footer .elementor-nav-menu--main,
+footer .elementor-nav-menu,
+.elementor-location-footer .elementor-nav-menu--main,
+.elementor-location-footer .elementor-nav-menu {
+  display: flex !important;
+  flex-direction: column !important;
+}
+footer .elementor-nav-menu--main > li,
+footer .elementor-nav-menu > li,
+.elementor-location-footer .elementor-nav-menu--main > li,
+.elementor-location-footer .elementor-nav-menu > li {
+  width: 100%;
+}
+footer .elementor-nav-menu--main > li > a,
+footer .elementor-nav-menu > li > a,
+.elementor-location-footer .elementor-nav-menu--main > li > a,
+.elementor-location-footer .elementor-nav-menu > li > a {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 6px 0;
+  font-size: 0.92rem;
+}
+footer .elementor-nav-menu--main > li > a:hover,
+footer .elementor-nav-menu > li > a:hover,
+.elementor-location-footer .elementor-nav-menu--main > li > a:hover,
+.elementor-location-footer .elementor-nav-menu > li > a:hover {
+  color: var(--pal-yellow, #F4A51C);
+}
+
+/* ==========================================================================
+   Footer — mobile compact layout
+   - Reduce padding so footer doesn't scroll forever
+   - Hide description text that's redundant on small screens
+   - Put Quick Links + Get Involved side-by-side
+   - Compact newsletter section
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Tighter section padding */
+  footer.elementor-location-footer .elementor-section[data-id*="sec000009"] {
+    padding: 28px 16px 12px !important;
+  }
+  footer.elementor-location-footer .elementor-section[data-id*="sec000009"] > .elementor-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    gap: 10px !important;
+  }
+
+  /* Column 1 (logo block): hide the long description paragraph on mobile */
+  footer.elementor-location-footer .elementor-section[data-id*="sec000009"] > .elementor-container > .elementor-column:first-child p {
+    display: none;
+  }
+  /* Keep the logo row + contact info + socials but tighten spacing */
+  footer.elementor-location-footer .elementor-section[data-id*="sec000009"] > .elementor-container > .elementor-column:first-child .elementor-widget-html > .elementor-widget-container > div {
+    gap: 10px !important;
+  }
+
+  /* Quick Links + Get Involved columns: display side-by-side on mobile */
+  footer.elementor-location-footer .elementor-section[data-id*="sec000009"] > .elementor-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+  /* Columns 2 & 3 (Quick Links + Get Involved): half-width side-by-side */
+  footer.elementor-location-footer .elementor-section[data-id*="sec000009"] > .elementor-container > .elementor-column:nth-child(2),
+  footer.elementor-location-footer .elementor-section[data-id*="sec000009"] > .elementor-container > .elementor-column:nth-child(3) {
+    width: 48% !important;
+    flex: 0 0 48% !important;
+    max-width: 48% !important;
+  }
+  /* Reduce heading bottom-margin in footer columns */
+  footer.elementor-location-footer h4 {
+    margin-bottom: 8px !important;
+  }
+  /* Smaller nav/menu link padding */
+  footer .elementor-nav-menu--main > li > a,
+  footer .elementor-nav-menu > li > a,
+  .elementor-location-footer .elementor-nav-menu--main > li > a,
+  .elementor-location-footer .elementor-nav-menu > li > a {
+    padding: 4px 0 !important;
+    font-size: 0.84rem !important;
+  }
+  /* PAL Footer Menu widget links: compact on mobile */
+  footer .pal-footer-menu__list li a,
+  .elementor-location-footer .pal-footer-menu__list li a {
+    font-size: 0.84rem !important;
+  }
+  footer .pal-footer-menu__list li,
+  .elementor-location-footer .pal-footer-menu__list li {
+    margin-bottom: 6px !important;
+  }
+
+  /* Column 4 (Stay Connected): hide description, keep newsletter */
+  footer.elementor-location-footer .elementor-section[data-id*="sec000009"] > .elementor-container > .elementor-column:nth-child(4) .elementor-widget-text-editor {
+    display: none;
+  }
+
+  /* Legal bar: tighter */
+  .pal-footer-legal {
+    margin-top: 16px !important;
+    padding: 14px 0 8px !important;
+  }
+  footer.elementor-location-footer .elementor-section[data-id*="sec000012"] {
+    padding: 0 16px 12px !important;
+  }
+}

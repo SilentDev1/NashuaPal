@@ -1,0 +1,253 @@
+/* ============================================================================
+   Event template variants — output by nashua-pal-event-layout-helper v2.0.0
+       Variant 1: BetterUnite embedded donation form + sponsors  (palgolf)
+       Variant 2: Community event w/ info & outside register link (conewithacop)
+       Variant 3: Champions / Awardees with bios + previous winners (2025champions)
+   Loaded when body has .pal-page--event-variant
+   ========================================================================= */
+
+/* ----- Shared variant chrome (hero band) -------------------------------- */
+.pal-page--event-variant .pal-event-hero {
+	background: linear-gradient(135deg, var(--pal-navy) 0%, var(--pal-navy-2) 60%, var(--pal-navy-3) 100%);
+	color: var(--pal-white);
+	padding: var(--pal-space-xl) 0 var(--pal-space-lg);
+}
+.pal-page--event-variant .pal-event-hero__date {
+	display: inline-block;
+	background: var(--pal-yellow);
+	color: var(--pal-navy);
+	padding: 8px 18px;
+	border-radius: 999px;
+	font-family: var(--pal-font-heading);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	font-size: 0.9rem;
+	margin-bottom: var(--pal-space-xs);
+}
+.pal-page--event-variant .pal-event-hero h1 {
+	margin: 0 0 var(--pal-space-xs);
+	color: var(--pal-white);
+}
+.pal-page--event-variant .pal-event-hero__meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--pal-space-md);
+	margin: var(--pal-space-sm) 0 0;
+	opacity: 0.92;
+}
+.pal-page--event-variant .pal-event-hero__meta strong {
+	color: var(--pal-yellow);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	font-size: 0.8rem;
+	display: block;
+}
+
+/* ============================================================================
+   Variant 1 — BetterUnite Embed  (palgolf style)
+   ========================================================================= */
+
+.pal-event-variant--betterunite .pal-event-embed {
+	max-width: 1280px;          /* wider than default — user request */
+	margin: var(--pal-space-lg) auto;
+	padding: 0 var(--pal-space-sm);
+}
+.pal-event-variant--betterunite .pal-event-embed__frame {
+	width: 100%;
+	background: var(--pal-white);
+	border-radius: var(--pal-radius-md);
+	box-shadow: var(--pal-shadow-md);
+	overflow: hidden;
+}
+.pal-event-variant--betterunite .pal-event-embed iframe {
+	width: 100%;
+	min-height: 760px;          /* hide BetterUnite's tiny-iframe vertical scroll */
+	border: 0;
+	display: block;
+}
+
+/* Some embeds ship their own wrapper that constrains width — force it open. */
+.pal-event-variant--betterunite .pal-event-embed__frame > div,
+.pal-event-variant--betterunite .pal-event-embed__frame > div > iframe {
+	width: 100% !important;
+	max-width: 100% !important;
+}
+
+/* ============================================================================
+   Variant 2 — Community Event  (conewithacop style)
+   ========================================================================= */
+
+.pal-event-variant--community .pal-event-body {
+	display: grid;
+	grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+	gap: var(--pal-space-lg);
+	max-width: var(--pal-content-max);
+	margin: var(--pal-space-lg) auto;
+	padding: 0 var(--pal-space-sm);
+}
+.pal-event-variant--community .pal-event-body__main p {
+	font-size: 1.05rem;
+	line-height: 1.75;
+}
+.pal-event-variant--community .pal-event-sidebar {
+	background: var(--pal-gray-100);
+	border-radius: var(--pal-radius-md);
+	padding: var(--pal-space-md);
+	position: sticky;
+	top: 100px;
+	align-self: start;
+}
+.pal-event-variant--community .pal-event-sidebar h3 {
+	margin: 0 0 var(--pal-space-2xs);
+	font-size: 1rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--pal-yellow-dark);
+}
+.pal-event-variant--community .pal-event-sidebar dl { margin: 0; }
+.pal-event-variant--community .pal-event-sidebar dt {
+	font-weight: 700;
+	color: var(--pal-navy);
+	margin-top: var(--pal-space-2xs);
+	font-family: var(--pal-font-heading);
+}
+.pal-event-variant--community .pal-event-sidebar dd {
+	margin: 0 0 var(--pal-space-2xs);
+	color: var(--pal-gray-700);
+}
+.pal-event-variant--community .pal-event-sidebar .pal-btn {
+	width: 100%;
+	justify-content: center;
+	margin-top: var(--pal-space-sm);
+}
+
+@media (max-width: 880px) {
+	.pal-event-variant--community .pal-event-body { grid-template-columns: 1fr; }
+	.pal-event-variant--community .pal-event-sidebar { position: static; }
+}
+
+/* ============================================================================
+   Variant 3 — Champions / Awardees  (2025champions style)
+   ========================================================================= */
+
+/* Optional yellow fundraiser banner across the very top of the page body. */
+.pal-event-variant--champions .pal-event-fundraiser-banner {
+	background: var(--pal-yellow);
+	color: var(--pal-navy);
+	text-align: center;
+	padding: var(--pal-space-sm);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--pal-space-sm);
+	flex-wrap: wrap;
+	font-family: var(--pal-font-heading);
+	font-weight: 700;
+}
+.pal-event-variant--champions .pal-event-fundraiser-banner .pal-btn {
+	background: var(--pal-navy);
+	color: var(--pal-yellow);
+}
+.pal-event-variant--champions .pal-event-fundraiser-banner .pal-btn:hover {
+	background: #051628;
+	color: var(--pal-yellow);
+}
+
+/* Awardees grid — 11 to 13 cards per page */
+.pal-event-variant--champions .pal-awardees {
+	padding: var(--pal-space-xl) 0;
+	max-width: var(--pal-content-wide);
+	margin: 0 auto;
+}
+.pal-event-variant--champions .pal-awardees__intro {
+	text-align: center;
+	max-width: 720px;
+	margin: 0 auto var(--pal-space-lg);
+	padding: 0 var(--pal-space-sm);
+}
+.pal-event-variant--champions .pal-awardees__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: var(--pal-space-md);
+	padding: 0 var(--pal-space-sm);
+}
+
+.pal-event-variant--champions .pal-awardee-card {
+	background: var(--pal-white);
+	border-radius: var(--pal-radius-md);
+	overflow: hidden;
+	box-shadow: var(--pal-shadow-sm);
+	display: flex;
+	flex-direction: column;
+	transition: transform .2s ease, box-shadow .2s ease;
+}
+.pal-event-variant--champions .pal-awardee-card:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--pal-shadow-lg);
+}
+.pal-event-variant--champions .pal-awardee-card__photo {
+	aspect-ratio: 1 / 1;
+	background: var(--pal-gray-200) center / cover no-repeat;
+}
+.pal-event-variant--champions .pal-awardee-card__body {
+	padding: var(--pal-space-sm);
+	flex: 1;
+}
+.pal-event-variant--champions .pal-awardee-card__name {
+	margin: 0 0 var(--pal-space-3xs);
+	font-size: 1.1rem;
+}
+.pal-event-variant--champions .pal-awardee-card__program {
+	color: var(--pal-yellow-dark);
+	font-size: 0.85rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	margin-bottom: var(--pal-space-2xs);
+}
+.pal-event-variant--champions .pal-awardee-card__bio {
+	color: var(--pal-gray-700);
+	font-size: 0.9rem;
+	line-height: 1.55;
+}
+
+/* Previous winners chip row — links back to prior years' champions pages */
+.pal-event-variant--champions .pal-prev-winners {
+	background: var(--pal-gray-100);
+	padding: var(--pal-space-lg) 0;
+	margin-top: var(--pal-space-xl);
+}
+.pal-event-variant--champions .pal-prev-winners__title {
+	text-align: center;
+	margin: 0 0 var(--pal-space-md);
+}
+.pal-event-variant--champions .pal-prev-winners__list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: var(--pal-space-2xs);
+	list-style: none;
+	padding: 0 var(--pal-space-sm);
+	margin: 0;
+	max-width: var(--pal-content-max);
+	margin: 0 auto;
+}
+.pal-event-variant--champions .pal-prev-winners__list li a {
+	display: inline-flex;
+	padding: 10px 20px;
+	border-radius: 999px;
+	background: var(--pal-white);
+	border: 1px solid var(--pal-gray-200);
+	font-family: var(--pal-font-heading);
+	font-weight: 700;
+	font-size: 0.9rem;
+	color: var(--pal-navy);
+	transition: border-color .18s ease, background-color .18s ease, color .18s ease;
+}
+.pal-event-variant--champions .pal-prev-winners__list li a:hover {
+	border-color: var(--pal-yellow);
+	background: var(--pal-yellow);
+	color: var(--pal-navy);
+}

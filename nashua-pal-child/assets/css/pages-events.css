@@ -1,0 +1,157 @@
+/* ============================================================================
+   Events archive — upcoming + past + community calendar
+   Loaded when body has .pal-page--events
+   ========================================================================= */
+
+/* ----- Filter chips (Upcoming / Past / All) ----------------------------- */
+.pal-page--events .pal-events-controls {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--pal-space-2xs);
+	justify-content: center;
+	padding: var(--pal-space-md) 0;
+}
+.pal-events-controls__btn {
+	padding: 10px 22px;
+	border-radius: 999px;
+	background: transparent;
+	border: 2px solid var(--pal-gray-200);
+	font-family: var(--pal-font-heading);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	font-size: 0.85rem;
+	color: var(--pal-gray-700);
+	cursor: pointer;
+	transition: border-color .18s ease, color .18s ease, background-color .18s ease;
+}
+.pal-events-controls__btn:hover {
+	border-color: var(--pal-yellow);
+	color: var(--pal-navy);
+}
+.pal-events-controls__btn[aria-pressed="true"] {
+	background: var(--pal-navy);
+	color: var(--pal-white);
+	border-color: var(--pal-navy);
+}
+
+/* ----- Event card grid (6–8 upcoming slots, then community calendar) ---- */
+.pal-events-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: var(--pal-space-md);
+	padding: var(--pal-space-md) 0;
+	max-width: var(--pal-content-max);
+	margin: 0 auto;
+}
+
+.pal-event-card {
+	background: var(--pal-white);
+	border-radius: var(--pal-radius-md);
+	overflow: hidden;
+	box-shadow: var(--pal-shadow-sm);
+	display: flex;
+	flex-direction: column;
+	transition: transform .2s ease, box-shadow .2s ease;
+	position: relative;
+}
+.pal-event-card:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--pal-shadow-lg);
+}
+
+.pal-event-card__media {
+	aspect-ratio: 16 / 9;
+	background: var(--pal-gray-200) center / cover no-repeat;
+	position: relative;
+}
+
+/* Date pill — matches the existing [pal_event_date_pill] shortcode */
+.pal-event-card__date-pill {
+	position: absolute;
+	top: var(--pal-space-2xs);
+	left: var(--pal-space-2xs);
+	background: var(--pal-yellow);
+	color: var(--pal-navy);
+	padding: 8px 12px;
+	border-radius: var(--pal-radius-sm);
+	text-align: center;
+	font-family: var(--pal-font-heading);
+	min-width: 56px;
+	line-height: 1.05;
+	box-shadow: var(--pal-shadow-sm);
+}
+.pal-event-card__date-pill__day {
+	font-size: 1.5rem;
+	font-weight: 800;
+	display: block;
+}
+.pal-event-card__date-pill__mon {
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+.pal-event-card__body {
+	padding: var(--pal-space-sm);
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+.pal-event-card__title {
+	margin: 0 0 var(--pal-space-3xs);
+	font-size: 1.15rem;
+}
+.pal-event-card__meta {
+	color: var(--pal-gray-400);
+	font-size: 0.85rem;
+	margin-bottom: var(--pal-space-2xs);
+}
+.pal-event-card__excerpt {
+	color: var(--pal-gray-700);
+	font-size: 0.95rem;
+	flex: 1;
+}
+
+/* ----- Past events strip (bottom of archive) ---------------------------- */
+.pal-events-past {
+	background: var(--pal-gray-100);
+	padding: var(--pal-space-lg) 0;
+	margin-top: var(--pal-space-lg);
+}
+.pal-events-past .pal-event-card { opacity: 0.85; }
+.pal-events-past .pal-event-card__media { filter: grayscale(40%); }
+.pal-events-past__title {
+	text-align: center;
+	margin: 0 0 var(--pal-space-md);
+	color: var(--pal-gray-700);
+}
+
+/* ----- Community Calendar pocket (Google Cal iCal feed) ----------------- */
+.pal-community-calendar {
+	background: var(--pal-white);
+	border-radius: var(--pal-radius-md);
+	box-shadow: var(--pal-shadow-sm);
+	padding: var(--pal-space-sm);
+	margin: var(--pal-space-md) auto;
+	max-width: var(--pal-content-max);
+}
+.pal-community-calendar__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: var(--pal-space-2xs);
+	gap: var(--pal-space-sm);
+	flex-wrap: wrap;
+}
+.pal-community-calendar__title {
+	margin: 0;
+	font-size: 1rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--pal-yellow-dark);
+}
+.pal-community-calendar__source {
+	font-size: 0.8rem;
+	color: var(--pal-gray-400);
+}

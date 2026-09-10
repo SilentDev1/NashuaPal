@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Global Elementor Button Override — Nashua PAL
+   Forces all Elementor button widgets to use the PAL navy + gold brand.
+   ========================================================================== */
+
+/* ---------- Default state (primary / filled) ---------- */
+.elementor-button-wrapper .elementor-button,
+.elementor-widget-button .elementor-button,
+a.elementor-button,
+button.elementor-button {
+	background-color: var(--pal-navy, #071F3F) !important;
+	color: var(--pal-white, #fff) !important;
+	border: none !important;
+	border-radius: var(--pal-radius-md, 12px) !important;
+	font-family: var(--pal-font-heading, 'Montserrat', sans-serif) !important;
+	font-weight: 700 !important;
+	text-transform: uppercase !important;
+	letter-spacing: 0.05em !important;
+	transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* ---------- Hover state ---------- */
+.elementor-button-wrapper .elementor-button:hover,
+.elementor-widget-button .elementor-button:hover,
+a.elementor-button:hover,
+button.elementor-button:hover {
+	background-color: var(--pal-yellow, #F4A51C) !important;
+	color: var(--pal-navy, #071F3F) !important;
+	transform: translateY(-2px);
+	box-shadow: var(--pal-shadow-md, 0 8px 24px rgba(7, 31, 63, 0.10)) !important;
+}
+
+/* ---------- Focus state (accessibility) ---------- */
+.elementor-button-wrapper .elementor-button:focus,
+.elementor-widget-button .elementor-button:focus,
+a.elementor-button:focus,
+button.elementor-button:focus {
+	outline: 2px solid var(--pal-yellow, #F4A51C) !important;
+	outline-offset: 2px;
+}
+
+/* ---------- Button icon color ---------- */
+.elementor-button .elementor-button-icon,
+.elementor-button .elementor-button-icon i,
+.elementor-button .elementor-button-icon svg {
+	color: inherit !important;
+	fill: currentColor !important;
+}
+
+/* ---------- Ghost / outline variant ----------
+   Add CSS class "pal-btn-ghost" to any Elementor button widget
+   for the transparent outline style. */
+.elementor-button.pal-btn-ghost,
+.pal-btn-ghost .elementor-button {
+	background-color: transparent !important;
+	color: var(--pal-navy, #071F3F) !important;
+	border: 2px solid var(--pal-navy, #071F3F) !important;
+}
+
+.elementor-button.pal-btn-ghost:hover,
+.pal-btn-ghost .elementor-button:hover {
+	background-color: var(--pal-navy, #071F3F) !important;
+	color: var(--pal-white, #fff) !important;
+}
+
+/* ---------- Gold / accent variant ----------
+   Add CSS class "pal-btn-gold" for the gold CTA style. */
+.elementor-button.pal-btn-gold,
+.pal-btn-gold .elementor-button {
+	background-color: var(--pal-yellow, #F4A51C) !important;
+	color: var(--pal-navy, #071F3F) !important;
+}
+
+.elementor-button.pal-btn-gold:hover,
+.pal-btn-gold .elementor-button:hover {
+	background-color: var(--pal-yellow-dark, #D88E0F) !important;
+	color: var(--pal-navy, #071F3F) !important;
+}
+
+/* ---------- White ghost variant (for dark backgrounds) ----------
+   Add CSS class "pal-btn-white-ghost". */
+.elementor-button.pal-btn-white-ghost,
+.pal-btn-white-ghost .elementor-button {
+	background-color: transparent !important;
+	color: var(--pal-white, #fff) !important;
+	border: 2px solid rgba(255, 255, 255, 0.6) !important;
+}
+
+.elementor-button.pal-btn-white-ghost:hover,
+.pal-btn-white-ghost .elementor-button:hover {
+	background-color: var(--pal-white, #fff) !important;
+	color: var(--pal-navy, #071F3F) !important;
+	border-color: var(--pal-white, #fff) !important;
+}
+
+/* ---------- Form submit buttons ---------- */
+.elementor-form .elementor-button,
+.elementor-field-type-submit .elementor-button {
+	background-color: var(--pal-yellow, #F4A51C) !important;
+	color: var(--pal-navy, #071F3F) !important;
+}
+
+.elementor-form .elementor-button:hover,
+.elementor-field-type-submit .elementor-button:hover {
+	background-color: var(--pal-yellow-dark, #D88E0F) !important;
+	color: var(--pal-navy, #071F3F) !important;
+}
