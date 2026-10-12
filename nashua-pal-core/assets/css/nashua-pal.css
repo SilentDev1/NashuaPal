@@ -3321,6 +3321,50 @@ body { top: 0 !important; }
 
 .pal-mheader .pal-logo img { max-height: 56px; width: auto; height: auto; }
 
+/* ----------- MOBILE HEADER — seamless bar (1.55.41) -----------
+   The header Theme Builder template carries utility rows that render
+   nothing visible on the front end: the site-alert shortcode holder,
+   the drawer holder, and the [pal_mobile_menu] row (its panel is
+   position:fixed). Elementor gives every column `min-height: 1px`, so
+   each of those rows painted a 1px strip of the white body background —
+   the white lines above and below the navy mobile bar. Collapse them
+   on the front end only; the editor keeps its drop targets. */
+body:not(.elementor-editor-active) .elementor-location-header .elementor-top-column {
+	min-height: 0;
+}
+/* Bar polish: a thin gold accent + soft shadow separates the navy bar
+   from the hero photo instead of a stray white seam. */
+.pal-mheader {
+	position: relative;
+	z-index: 30;
+	border-bottom: 3px solid var(--pal-yellow) !important;
+	box-shadow: 0 6px 18px rgba(7, 31, 63, 0.28);
+}
+/* Globe button gets the same 44px tap target as the hamburger so the
+   two icons line up and meet touch-size guidelines. */
+.pal-mheader .pal-language__btn {
+	width: 44px !important;
+	height: 44px !important;
+	padding: 0 !important;
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50% !important;
+	transition: background-color .15s ease;
+}
+.pal-mheader .pal-language__btn:hover,
+.pal-mheader .pal-language__btn[aria-expanded="true"] {
+	background: rgba(255, 255, 255, 0.10) !important;
+}
+.pal-mheader .pal-language__btn:hover .pal-language__icon { color: var(--pal-yellow); }
+.pal-mheader .pal-language__btn:focus-visible,
+.pal-mheader .pal-mobile-toggle:focus-visible {
+	outline: 2px solid var(--pal-yellow) !important;
+	outline-offset: 2px;
+	border-radius: 50%;
+}
+.pal-mheader .elementor-column:last-child > .elementor-widget-wrap { gap: 4px; }
+
 /* ----- Logo overflow effect (mobile only) -----
    The mockup shows the PAL logo extending DOWN past the header bar into
    the hero image. Implementation:

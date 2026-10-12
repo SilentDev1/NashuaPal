@@ -4,7 +4,7 @@ Tags: custom post types, nashua pal, elementor
 Requires at least: 6.4
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.55.40
+Stable tag: 1.55.41
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,9 @@ Nashua PAL Core registers Events, Programs, and Partners as custom post types so
 Pair this plugin with the five Elementor templates shipped alongside it.
 
 == Changelog ==
+
+= 1.55.41 =
+* Mobile header: remove the white 1px seams above and below the navy bar (empty header utility rows no longer keep Elementor's 1px column min-height), add a gold accent + soft shadow under the bar, 44px globe tap target, gold focus rings.
 
 = 1.15.17 =
 * Add Elementor controls for hero height, stats card width, padding, overlap, icon size, number/label font sizes — all responsive.
